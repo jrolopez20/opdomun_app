@@ -30,3 +30,16 @@ export function loadFeaturedPosts ({ commit }, { rowsPerPage, page }) {
       })
   })
 }
+
+export function getPost ({ commit, state, dispatch }, { id }) {
+  return new Promise((resolve, reject) => {
+    axiosInstance.get(`posts/${id}`)
+      .then(response => {
+        commit('SET_POST', response.data)
+        resolve(response)
+      })
+      .catch((e) => {
+        reject(e)
+      })
+  })
+}

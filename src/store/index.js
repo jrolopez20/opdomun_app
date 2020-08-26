@@ -5,6 +5,9 @@ import post from './post'
 import provincia from './provincia'
 import municipio from './municipio'
 import hometype from './hometype'
+import office from './office'
+import subscription from './subscription'
+import article from './article'
 
 Vue.use(Vuex)
 
@@ -23,7 +26,10 @@ export default function (/* { ssrContext } */) {
       post,
       provincia,
       municipio,
-      hometype
+      hometype,
+      office,
+      subscription,
+      article
     },
 
     // enable strict mode (adds overhead!)

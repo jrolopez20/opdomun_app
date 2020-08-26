@@ -5,8 +5,10 @@ const axiosInstance = axios.create({
   baseURL: `${baseUrl}/api/`
 })
 
-const globalConfig = {
-  baseImageUrl: `${baseUrl}/images/`
+const config = {
+  pathPostPicture: `${baseUrl}/images/post_pictures/`,
+  pathArticlePicture: `${baseUrl}/images/article_pictures/`,
+  portalUrl: 'https://opdomun:com'
 }
 
 export default async ({ Vue, store }) => {
@@ -35,4 +37,4 @@ export default async ({ Vue, store }) => {
   Vue.prototype.$axios = axiosInstance
 }
 
-export { axiosInstance, globalConfig }
+export { axiosInstance, config }

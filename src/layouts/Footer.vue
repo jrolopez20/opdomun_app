@@ -17,24 +17,17 @@
            </div>
            <div class="col-sm-4 col-12 q-pa-sm">
                <div class="text-h5 q-pb-lg text-uppercase">CONTACTO</div>
-               <div class="col-auto text-body2 row no-wrap items-center">
-                   <q-icon name="phone" class="q-mr-sm"/> (+53) 58859033
-               </div>
-               <div class="col-auto text-body2 row no-wrap items-center">
-                   <q-icon name="email" class="q-mr-sm"/> info@opdomun.com
-               </div>
-               <div class="col-auto text-body2 row no-wrap items-center">
-                   <q-icon name="place" class="q-mr-sm"/> Czda. Gral Betancourt, Matanzas, Cuba.
-               </div>
+               <p class="text-body2">Puede contactarnos a través de nuestras oficinas.</p>
+               <q-btn no-caps to="/oficinas" outline label="Ver oficinas" />
            </div>
            <div class="col-sm-4 col-12 q-pa-sm">
                <div class="text-h5 q-pb-lg text-uppercase">Suscríbete</div>
                <p class="text-body2">Recibe notificaciones, noticias, estadísticas así como ofertas especiales.</p>
-               <q-btn to="/subscription" outline label="Suscríbete ahora" />
+               <q-btn no-caps to="/suscribirse" outline label="Suscríbete ahora" />
            </div>
        </div>
         <div class="copy-right q-py-md text-center text-body2">
-            Copyright @ 2020 Opdomun Todos los derechos reservados
+            Copyright @ 2019 Opdomun Todos los derechos reservados
         </div>
     </footer>
 </template>

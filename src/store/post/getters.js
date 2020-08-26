@@ -11,3 +11,7 @@ export function posts (state) {
 export function featuredPosts (state) {
   return state.featuredPosts
 }
+
+export function post (state) {
+  return state.post
+}

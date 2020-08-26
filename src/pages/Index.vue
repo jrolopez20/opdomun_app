@@ -9,7 +9,7 @@
 
             <div class="q-pa-md q-gutter-sm text-center">
                 <q-btn unelevated color="primary" label="Casas en venta" to="/casas-en-venta" style="min-width: 250px"/>
-                <q-btn unelevated color="primary" label="Publicar casa" to="/subscription" style="min-width: 250px"/>
+                <q-btn unelevated color="primary" label="Publicar casa" to="/anuncio/nuevo" style="min-width: 250px"/>
                 <q-btn unelevated color="primary" label="Subscripción de ofertas" to="/suscribirse" style="min-width: 250px"/>
             </div>
         </q-parallax>
@@ -22,7 +22,15 @@
         </div>
 
         <div class="full-width row recommended_properties">
-            <SingleProperty v-for="property in 3" :key="`xs-${property}`" class="col-sm-6 col-md-4 col-lg-3 col-12"/>
+            <div class="row full-width">
+                <div class="col-sm-4 col-12 q-pa-sm" v-for="property in 3" :key="`xs-${property}`">
+<!--                    <SingleProperty-->
+<!--                            :property="property"-->
+<!--                            class="col-sm-6 col-md-4 col-lg-3 col-12"-->
+<!--                    />-->
+                    sssd
+                </div>
+            </div>
         </div>
 
         <div class="full-width q-pt-xl q-pb-sm">
@@ -74,12 +82,12 @@
 </template>
 
 <script>
-import SingleProperty from 'components/property/SingleProperty.vue'
+// import SingleProperty from 'components/property/SingleProperty.vue'
 
 export default {
   name: 'PageIndex',
   components: {
-    SingleProperty
+    // SingleProperty
   }
 }
 </script>

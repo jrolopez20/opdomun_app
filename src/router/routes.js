@@ -8,9 +8,11 @@ const routes = [
       { path: 'casas-en-venta', component: () => import('pages/Properties.vue') },
       { path: 'oficinas', component: () => import('pages/Offices.vue') },
       { path: 'blog', component: () => import('pages/Blog.vue') },
+      { path: 'articulo/:id', component: () => import('pages/ArticleDetail.vue') },
       { path: 'quienes-somos', component: () => import('pages/About.vue') },
       { path: 'preguntas-frecuentes', component: () => import('pages/Faq.vue') },
-      { path: 'suscribirse', component: () => import('pages/Subscription.vue') }
+      { path: 'suscribirse', component: () => import('pages/Subscription.vue') },
+      { path: 'casa/:id', component: () => import('pages/PropertyDetail.vue') }
     ]
   },
 

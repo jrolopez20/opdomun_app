@@ -62,31 +62,35 @@
             <div class="full-width q-py-md">
                 <div class="text-h4 text-dark text-center q-py-md">Nuestros servicios</div>
 
-                <div class="full-width row">
+                <div class="full-width row" style="font-size: 0.8rem;">
                     <div class="col-sm-6 col-md-3 col-12 q-pa-sm">
                         <q-card flat class="text-center bg-grey-4">
                             <q-card-section>
-                                <div class="text-h5 text-primary">
+                                <div class="text-h6">
                                     <i class="las la-bullhorn"></i> Anuncio Premium
                                 </div>
                             </q-card-section>
 
-                            <q-card-section class="q-py-none text-body2">
+                            <q-card-section class="q-py-none service-description">
                                 <div>Visita de un arquitecto.</div>
                                 <div>Publicación de su anuncio en Opdomun.</div>
                                 <div>Notificación de compradores interesados.</div>
                                 <div>Entrega de informe técnico.</div>
                                 <div>Publicidad en las Redes Sociales.</div>
-                                <div class="text-h5 text-primary q-pt-sm">
-                                    <strong class="text-h4">30</strong> cuc / 3 meses
+                                <div class="q-my-md text-body1">
+                                    <strong>30 cuc / 3 meses</strong>
                                 </div>
                             </q-card-section>
-                            <q-card-actions class="q-pa-md">
-                                <q-btn unelevated
+
+                            <q-separator inset/>
+
+                            <q-card-actions>
+                                <q-btn flat no-caps
                                        color="primary"
                                        class="full-width"
-                                       label="Seleccionar"
-                                />
+                                >
+                                    <span class="text-body1 text-bold">Seleccionar</span>
+                                </q-btn>
                             </q-card-actions>
                         </q-card>
                     </div>
@@ -94,25 +98,29 @@
                     <div class="col-sm-6 col-md-3 col-12 q-pa-sm">
                         <q-card flat class="text-center bg-grey-4">
                             <q-card-section>
-                                <div class="text-h5 text-primary">
+                                <div class="text-h6">
                                     <i class="las la-building"></i> Tasación de Inmuebles
                                 </div>
                             </q-card-section>
 
-                            <q-card-section class="q-py-none text-body2">
+                            <q-card-section class="q-py-none service-description">
                                 <div>Visita de un arquitecto.</div>
                                 <div>Cálculo del precio de la casa utilizando la metodología de Opdomun.</div>
                                 <div>Entrega de informe técnico.</div>
-                                <div class="text-h5 text-primary q-pt-sm">
-                                    <strong class="text-h4">40 </strong> cuc
+                                <div class="q-my-md text-body1">
+                                    <strong>40 cuc</strong>
                                 </div>
                             </q-card-section>
-                            <q-card-actions class="q-pa-md">
-                                <q-btn unelevated
+
+                            <q-separator inset/>
+
+                            <q-card-actions>
+                                <q-btn flat no-caps
                                        color="primary"
                                        class="full-width"
-                                       label="Seleccionar"
-                                />
+                                >
+                                    <span class="text-body1 text-bold">Seleccionar</span>
+                                </q-btn>
                             </q-card-actions>
                         </q-card>
                     </div>
@@ -120,49 +128,58 @@
                     <div class="col-sm-6 col-md-3 col-12 q-pa-sm">
                         <q-card flat class="text-center bg-grey-4">
                             <q-card-section>
-                                <div class="text-h5 text-primary">
+                                <div class="text-h6">
                                     <i class="las la-edit"></i> Subscripción de ofertas
                                 </div>
                             </q-card-section>
 
-                            <q-card-section class="q-py-none text-body2">
+                            <q-card-section class="q-py-none service-description">
                                 <div>Registro de las caracteristicas de la casa que usted desea comprar.</div>
                                 <div>Notificación de anuncios de casas de acuerdo a sus preferencias.</div>
-                                <div class="text-h5 text-primary q-pt-sm">
-                                    <strong>Gratis</strong> / 3 meses
+                                <div class="q-my-md text-body1">
+                                    <strong>Gratis / 3 meses</strong>
                                 </div>
                             </q-card-section>
-                            <q-card-actions class="q-pa-md">
-                                <q-btn unelevated
+
+                            <q-separator inset/>
+
+                            <q-card-actions>
+                                <q-btn flat no-caps
                                        color="primary"
                                        class="full-width"
-                                       label="Seleccionar"
-                                       to="/subscription"
-                                />
+                                       to="/suscribirse"
+                                >
+                                    <span class="text-body1 text-bold">Seleccionar</span>
+                                </q-btn>
                             </q-card-actions>
                         </q-card>
                     </div>
+
                     <div class="col-sm-6 col-md-3 col-12 q-pa-sm">
                         <q-card flat class="text-center bg-grey-4">
                             <q-card-section>
-                                <div class="text-h5 text-primary">
+                                <div class="text-h6">
                                     <i class="las la-bullhorn"></i> Anuncio Gratis
                                 </div>
                             </q-card-section>
 
-                            <q-card-section class="q-py-none text-body2">
+                            <q-card-section class="q-py-none service-description">
                                 <div>Publicación de su anuncio en Opdomun</div>
                                 <div>Activo por un mes</div>
-                                <div class="text-h5 text-primary q-pt-sm">
-                                    <strong>Gratis</strong> / 1 mes
+                                <div class="q-my-md text-body1">
+                                    <strong>Gratis / 1 meses</strong>
                                 </div>
                             </q-card-section>
-                            <q-card-actions class="q-pa-md">
-                                <q-btn unelevated
+
+                            <q-separator inset/>
+
+                            <q-card-actions>
+                                <q-btn flat no-caps
                                        color="primary"
                                        class="full-width"
-                                       label="Seleccionar"
-                                />
+                                >
+                                    <span class="text-body1 text-bold">Seleccionar</span>
+                                </q-btn>
                             </q-card-actions>
                         </q-card>
                     </div>
@@ -193,3 +210,9 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+@media (min-width: 600px)
+    .service-description
+        height: 150px
+</style>
