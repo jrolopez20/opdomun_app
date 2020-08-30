@@ -7,8 +7,7 @@ const axiosInstance = axios.create({
 
 const config = {
   pathPostPicture: `${baseUrl}/images/post_pictures/`,
-  pathArticlePicture: `${baseUrl}/images/article_pictures/`,
-  portalUrl: 'https://opdomun:com'
+  pathArticlePicture: `${baseUrl}/images/article_pictures/`
 }
 
 export default async ({ Vue, store }) => {

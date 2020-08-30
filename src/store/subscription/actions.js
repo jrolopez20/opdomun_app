@@ -1,7 +1,6 @@
 import { axiosInstance } from 'boot/axios'
 
 export function addSubscription ({ commit, state, dispatch }, subscription) {
-  console.log(subscription)
   return new Promise((resolve, reject) => {
     axiosInstance.post('subscriptions/', {
       provincia_id: subscription.provincia,

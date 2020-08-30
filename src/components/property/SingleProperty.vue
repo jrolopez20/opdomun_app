@@ -1,6 +1,9 @@
 <template>
   <q-card>
-    <q-img :src="picturePath" style="max-height: 200px;"/>
+    <q-img :src="picturePath + property.image" style="max-height: 200px;"/>
+
+    <span class="status premium" v-if="property.plan === 1">{{property.plan_title}}</span>
+    <span class="post-sold" v-if="property.sold === 1">VENDIDA</span>
 
     <q-card-section class="q-pb-sm">
       <q-btn
@@ -12,7 +15,7 @@
               :to="`casa/${property.id}`"
       />
       <div class="col text-h6 ellipsis">
-        {{ property.municipio.provincia.title + ', ' + property.municipio.title }}
+        {{ property.provincia + ', ' + property.municipio }}
       </div>
       <div class="text-grey-8 text-body2 row no-wrap ">
         <q-icon name="las la-map-marker" size="xs"/>
@@ -65,7 +68,48 @@ export default {
     }
   },
   mounted () {
-    this.picturePath = this.property.images && this.property.images.length ? config.pathPostPicture + this.property.images[0].url : ''
+    this.picturePath = config.pathPostPicture
   }
 }
 </script>
+
+<style lang="sass" scoped>
+
+  .status
+    position: absolute
+    top: 12px
+    left: -7px
+    color: #fff
+    padding: 10px 17px 10px 17px
+    font-weight: bold
+    font-size: 12px
+    z-index: 99
+    text-transform: uppercase
+
+    &::before
+      position: absolute
+      top: -5px
+      left: 0
+      content: ''
+      width: 0
+      height: 0
+      border-style: solid
+      border-width: 0px 0px 5px 7px
+      z-index: 99
+
+    &.premium
+      background: #008ffc
+      &::before
+        border-color: transparent transparent #008ffc transparent
+
+  .post-sold
+    position: absolute
+    top: 60px
+    left: 0px
+    color: #fff
+    background: #008ffc
+    padding: 10px 30px 10px 10px
+    font-weight: bold
+    font-size: 20px
+    z-index: 99
+</style>

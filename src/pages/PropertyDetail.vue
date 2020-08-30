@@ -109,20 +109,20 @@
 
         <div class="text-h5 q-py-lg">Información del Propietario</div>
         <div class="bg-grey-1 text-body2 q-pa-md">
-          <div class="text-h6">{{ post.owner.fullname}}</div>
+          <div class="text-h6">{{ post.owner ? post.owner.fullname : '' }}</div>
           <div class="text-body2">
-            <q-icon name="las la-phone" size="sm"/> {{ post.owner.phone}}
+            <q-icon name="las la-phone" size="sm"/> {{ post.owner ? post.owner.phone : '' }}
           </div>
-          <div class="text-body2" v-if="post.owner.email">
-            <q-icon name="las la-envelope" size="sm"/> {{ post.owner.email}}
+          <div class="text-body2" v-if="post.owner && post.owner.email">
+            <q-icon name="las la-envelope" size="sm"/> {{ post.owner ? post.owner.email : ''}}
           </div>
         </div>
 
         <q-separator inset class="q-my-md"/>
 
         <div class="text-h6">Actividad</div>
-        <div>Cantidad de visitas: 882</div>
-        <div>Días en Opdomun: 387 días</div>
+        <div>Cantidad de visitas: {{ post.postVisit ? post.postVisit.total : '' }}</div>
+        <div>Días en Opdomun: {{ daysOnOpdomun }} días</div>
       </div>
       <div class="col-sm-4 col-12 q-pa-sm">
         <FeaturedPosts/>
@@ -160,6 +160,9 @@ export default {
     },
     postHeader () {
       return this.post && this.post.municipio ? this.post.municipio?.title + ', ' + this.post.municipio?.provincia?.title : ''
+    },
+    daysOnOpdomun () {
+      return date.getDateDiff(new Date(), this.post.published_at)
     }
   },
   watch: {

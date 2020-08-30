@@ -8,6 +8,7 @@ import hometype from './hometype'
 import office from './office'
 import subscription from './subscription'
 import article from './article'
+import variableAu from './variable_au'
 
 Vue.use(Vuex)
 
@@ -29,7 +30,8 @@ export default function (/* { ssrContext } */) {
       hometype,
       office,
       subscription,
-      article
+      article,
+      variableAu
     },
 
     // enable strict mode (adds overhead!)

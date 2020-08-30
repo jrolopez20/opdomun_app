@@ -216,19 +216,19 @@ export default {
     ...mapActions('hometype', [
       'loadHomeTypes'
     ]),
-    ...mapActions('subscription', [
+    ...mapActions('property', [
       'addSubscription'
     ]),
     onProvinciaChange () {
-      if (this.subscription.provincia) {
-        this.loadMunicipios({ provinciaId: this.subscription.provincia })
+      if (this.property.provincia) {
+        this.loadMunicipios({ provinciaId: this.property.provincia })
       }
     },
     onSubmit () {
       this.$refs.formSubscription.validate().then(success => {
         if (success) {
           Loading.show()
-          this.addSubscription(this.subscription).then(() => {
+          this.addSubscription(this.property).then(() => {
             Loading.hide()
             Notification.showSucces('La subscripción ha sido registrada satisfactoriamente')
             this.$router.push('/')

@@ -1,6 +1,10 @@
 <template>
-  <q-page class="flex flex-block">
+  <q-page class="">
     <Header :title="title"/>
+    <FilterProperty
+            class="q-mb-lg full-width"
+    />
+
     <q-table
             grid
             hide-header
@@ -12,7 +16,7 @@
             :filter="filter"
             @request="onRequest"
             binary-state-sort
-            class="q-pb-lg"
+            class="q-pb-lg full-width"
     >
       <template v-slot:item="props">
         <div class="q-pa-sm col-xs-12 col-sm-6 col-md-4">
@@ -27,17 +31,19 @@
 import { mapActions, mapGetters } from 'vuex'
 import Header from 'layouts/Header.vue'
 import SingleProperty from 'components/property/SingleProperty.vue'
+import FilterProperty from 'components/property/FilterProperty.vue'
 
 export default {
   name: 'PageProperties',
   components: {
     Header,
-    SingleProperty
+    SingleProperty,
+    FilterProperty
   },
   data () {
     return {
       title: 'Casas en venta',
-      filter: '',
+      filter: null,
       loading: false,
       pagination: {
         page: 1,
@@ -55,30 +61,46 @@ export default {
   },
   computed: {
     ...mapGetters('post', [
+      'filters',
       'posts'
     ])
+  },
+  watch: {
+    filters: 'search'
   },
   methods: {
     ...mapActions('post', [
       'loadPosts'
     ]),
+    search () {
+      this.updateFilter()
+    },
     onRequest (props) {
       const { page, rowsPerPage } = props.pagination
       this.loading = true
-
       this.loadPosts({ rowsPerPage, page, filter: this.filter }).then(response => {
         this.pagination.rowsNumber = this.posts.total
         this.pagination.page = this.posts.page
         this.data = this.posts.data
         this.loading = false
       })
+    },
+    updateFilter () {
+      if (this.filters) {
+        const { provincia, municipio, ...attrs } = this.filters
+        const filtersCleaned = {
+          provincia: provincia?.id,
+          municipio: municipio?.id,
+          ...attrs
+        }
+        this.filter = { ...filtersCleaned }
+      }
     }
   },
-  mounted () {
-    // get initial data from server (1st page)
+  created () {
+    this.updateFilter()
     this.onRequest({
-      pagination: this.pagination,
-      filter: ''
+      pagination: this.pagination
     })
   },
   meta () {
