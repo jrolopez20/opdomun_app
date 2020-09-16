@@ -1,5 +1,7 @@
 import axios from 'axios'
 import Notification from '../services/notification.service'
+
+// const baseUrl = 'https://api.opdomun.com'
 const baseUrl = 'http://localhost:3334'
 const axiosInstance = axios.create({
   baseURL: `${baseUrl}/api/`
@@ -23,8 +25,16 @@ export default async ({ Vue, store }) => {
     }
     const { response: { status, data } } = error
     if (status === 401) {
-      store.dispatch('auth/logout')
-      Notification.showError('Su sesión ha expirado. Por favor auntentíquese nuevamente')
+      if (data.message.indexOf('E_PASSWORD_MISMATCH') !== -1) {
+        Notification.showError('Contraseña incorrecta')
+      } else {
+        store.dispatch('auth/logout')
+        Notification.showError('Su sesión ha expirado. Por favor auntentíquese nuevamente')
+      }
+    } else if (Array.isArray(data)) {
+      data.map(error => {
+        Notification.showError(error.message)
+      })
     } else {
       Object.keys(data).forEach(property => {
         Notification.showError(data[property])

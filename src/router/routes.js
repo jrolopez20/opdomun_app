@@ -13,7 +13,9 @@ const routes = [
       { path: 'quienes-somos', component: () => import('pages/About.vue') },
       { path: 'preguntas-frecuentes', component: () => import('pages/Faq.vue') },
       { path: 'suscribirse', component: () => import('pages/Subscription.vue') },
-      { path: 'casa/:id', component: () => import('pages/PropertyDetail.vue') }
+      { path: 'casa/:id', component: () => import('pages/PropertyDetail.vue') },
+      { path: 'login', component: () => import('pages/Login.vue') },
+      { path: 'profile', component: () => import('pages/MyProfile.vue') }
     ]
   },
 

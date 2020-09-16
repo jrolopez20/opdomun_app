@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import auth from './auth'
 import post from './post'
 import provincia from './provincia'
 import municipio from './municipio'
@@ -24,6 +25,7 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
+      auth,
       post,
       provincia,
       municipio,

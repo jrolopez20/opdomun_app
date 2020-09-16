@@ -17,7 +17,7 @@ export function loadPosts ({ commit }, { rowsPerPage, page, filter }) {
   }
 
   return new Promise((resolve, reject) => {
-    axiosInstance.get(`posts?limit=${rowsPerPage}&page=${page}${params}`)
+    axiosInstance.get(`published_posts?limit=${rowsPerPage}&page=${page}${params}`)
       .then(response => {
         commit('FETCH_POSTS', response.data)
         resolve(response)
@@ -45,7 +45,6 @@ export function loadRecommendedPosts ({ commit }, { limit }) {
   return new Promise((resolve, reject) => {
     axiosInstance.get(`recommended_posts?limit=${limit}`)
       .then(response => {
-        console.log(response.data)
         commit('FETCH_RECOMMENDED_POSTS', response.data)
         resolve(response)
       })

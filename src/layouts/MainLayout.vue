@@ -27,6 +27,21 @@
                        :to="item.link"
                        :label="item.textAbreviate || item.text"
           />
+          <q-btn-dropdown auto-close stretch flat
+                          icon="las la-user"
+                          v-if="isLoggedIn"
+          >
+            <q-list>
+              <q-item clickable to="/profile">
+                <q-item-section>Mi Opdomun</q-item-section>
+              </q-item>
+
+              <q-item clickable @click="onLogout">
+                <q-item-section>Cerrar sesión</q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
+          <q-route-tab label="Entrar" to="/login" v-if="!isLoggedIn"/>
         </q-tabs>
       </q-toolbar>
     </q-header>
@@ -98,6 +113,7 @@
 
 <script>
 import Footer from './Footer'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'MainLayout',
@@ -107,6 +123,7 @@ export default {
   data () {
     return {
       leftDrawerOpen: false,
+      showLoginDialog: false,
       links1: [
         { icon: 'home', text: 'Casas en venta', link: '/casas-en-venta' },
         { icon: 'people', text: 'Oficinas Opdomun', link: '/oficinas' },
@@ -121,6 +138,17 @@ export default {
     }
   },
   computed: {
+    ...mapGetters('auth', [
+      'isLoggedIn'
+    ])
+  },
+  methods: {
+    ...mapActions('auth', [
+      'logout'
+    ]),
+    onLogout () {
+      this.logout()
+    }
   }
 }
 </script>

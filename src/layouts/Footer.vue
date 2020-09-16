@@ -22,7 +22,7 @@
            </div>
            <div class="col-sm-4 col-12 q-pa-sm">
                <div class="text-h5 q-pb-lg text-uppercase">Suscríbete</div>
-               <p class="text-body2">Recibe notificaciones, noticias, estadísticas así como ofertas especiales.</p>
+               <p class="text-body2">Recibe notificaciones sobre anuncios que se ajusten a tus preferencias.</p>
                <q-btn no-caps to="/suscribirse" outline label="Suscríbete ahora" />
            </div>
        </div>

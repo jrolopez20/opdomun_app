@@ -123,13 +123,11 @@
 </template>
 
 <script>
-// import { Loading } from 'quasar'
 import { mapGetters, mapActions } from 'vuex'
-// import Notification from '../../services/notification.service'
+import Notification from '../../services/notification.service'
 
 export default {
   name: 'FilterProperty',
-  props: [],
   data () {
     return {
       plans: [

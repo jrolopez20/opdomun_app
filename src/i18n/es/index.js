@@ -6,8 +6,10 @@ export default {
       close: 'Cerrar',
       cancel: 'Cancelar',
       acept: 'Aceptar',
+      save: 'Guardar',
       email: 'Email',
       fullName: 'Nombre y apellidos',
+      numId: 'No. Identidad',
       goBack: 'Regresar',
       phone: 'Teléfono',
       address: 'Dirección',
@@ -116,10 +118,16 @@ export default {
       alphabeticalChars: 'Sólo caracteres alfabéticos',
       greatherThan: 'El valor de este campo debe ser mayor que {value}',
       maxCharLength: 'Ha excedido la cantidad de {value} caracteres',
+      minCharLength: 'No cumple con la cantidad mínima de {value} caracteres',
       incompleteForm: 'Por favor completar los campos correctamente'
     },
     messages: {
-      dataSaveSuccessfully: 'Datos guardados con éxito'
+      saveSuccessfully: 'Datos guardados con éxito',
+      deleteSuccessfully: 'El elemento ha sido eliminado con éxito'
+    },
+    confirm: {
+      delete: '¿Está seguro que desea eliminar este elemento?',
+      publishAppraisal: '¿Está seguro que desea publicar la tasación?'
     }
   },
   auth: {

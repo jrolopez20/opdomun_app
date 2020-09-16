@@ -5,11 +5,12 @@
                 <div class="row wrap">
                     <div class="col-12 q-pa-sm">
                         <q-select outlined dense required emit-value map-options
-                                  v-model="subscription.provincia"
+                                  v-model="property.provincia"
                                   :options="provincias"
                                   :label="this.$t('common.labels.provincia')"
                                   option-value="id"
                                   option-label="title"
+                                  @input="onProvinciaChange"
                                   :rules="[
                                     val => val || this.$t('common.errors.required')
                                   ]"
@@ -22,7 +23,7 @@
                     <div class="col-12 q-pa-sm">
                         <q-select
                                 outlined dense required multiple use-chips emit-value map-options
-                                v-model="subscription.municipio"
+                                v-model="property.municipio"
                                 :options="municipios"
                                 :label="this.$t('common.labels.municipio')"
                                 option-value="id"
@@ -39,7 +40,7 @@
                     <div class="col-12 q-pa-sm">
                         <q-select
                                 outlined dense multiple use-chips emit-value map-options
-                                v-model="subscription.homeType"
+                                v-model="property.homeType"
                                 :label="this.$t('common.labels.homeType')"
                                 :options="homeTypes"
                                 option-value="id"
@@ -56,7 +57,7 @@
                     <div class="col-sm-6 col-12 q-pa-sm">
                         <q-input
                                 outlined dense required
-                                v-model.number="subscription.minPrice"
+                                v-model.number="property.minPrice"
                                 type="number"
                                 label="Precio min"
                                 :rules="[
@@ -71,7 +72,7 @@
                     <div class="col-sm-6 col-12 q-pa-sm">
                         <q-input
                                 outlined dense required
-                                v-model.number="subscription.maxPrice"
+                                v-model.number="property.maxPrice"
                                 type="number"
                                 label="Precio max."
                                 :rules="[
@@ -86,7 +87,7 @@
                     <div class="col-sm-6 col-12 q-pa-sm">
                         <q-input
                                 outlined dense required
-                                v-model.number="subscription.bedrooms"
+                                v-model.number="property.bedrooms"
                                 type="number"
                                 label="Habitaciones"
                                 :rules="[
@@ -101,7 +102,7 @@
                     <div class="col-sm-6 col-12 q-pa-sm">
                         <q-input
                                 outlined dense required
-                                v-model.number="subscription.bathrooms"
+                                v-model.number="property.bathrooms"
                                 type="number"
                                 label="Baños"
                                 :rules="[
@@ -116,7 +117,7 @@
                     <div class="col-sm-12 col-12 q-pa-sm">
                         <q-input
                                 outlined dense required
-                                v-model="subscription.fullname"
+                                v-model="property.fullname"
                                 label="Nombre y apellidos"
                                 :rules="[
                                   val => !!val || this.$t('common.errors.required')
@@ -129,7 +130,7 @@
                     </div>
                     <div class="col-sm-6 col-12 q-pa-sm">
                         <q-input outlined dense required
-                                 v-model="subscription.telephone"
+                                 v-model="property.telephone"
                                  type="tel"
                                  label="Teléfono móvil"
                                  prefix="+(53)"
@@ -145,7 +146,7 @@
                     <div class="col-sm-6 col-12 q-pa-sm">
                         <q-input
                                 outlined dense
-                                v-model="subscription.email"
+                                v-model="property.email"
                                 type="email"
                                 label="Email"
                                 :rules="[
@@ -180,7 +181,7 @@ export default {
 
   data () {
     return {
-      subscription: {
+      property: {
         provincia: null,
         municipio: null,
         homeType: null,
@@ -216,12 +217,13 @@ export default {
     ...mapActions('hometype', [
       'loadHomeTypes'
     ]),
-    ...mapActions('property', [
+    ...mapActions('subscription', [
       'addSubscription'
     ]),
     onProvinciaChange () {
       if (this.property.provincia) {
         this.loadMunicipios({ provinciaId: this.property.provincia })
+        this.property.municipio = null
       }
     },
     onSubmit () {
@@ -240,9 +242,6 @@ export default {
         }
       })
     }
-  },
-  watch: {
-    'subscription.provincia': 'onProvinciaChange'
   },
   mounted () {
     this.loadProvincias()
