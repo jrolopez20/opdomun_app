@@ -4,20 +4,15 @@ import messages from 'src/i18n'
 
 Vue.use(VueI18n)
 
-Vue.filter('toCurrency', value => {
-  if (typeof value !== 'number') {
-    return value
+Vue.filter('toCurrency', price => {
+  if (typeof price !== 'object') {
+    return price
   }
-  // const number = (num / 1).toFixed(2).replace(',', '.')
-  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' CUC'
-})
-
-Vue.filter('toCurrency', value => {
-  if (typeof value !== 'number') {
-    return value
+  if (!price.value) {
+    return null
   }
-  // const number = (num / 1).toFixed(2).replace(',', '.')
-  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' CUC'
+  const value = price.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+  return `${value} ${price.currency}`
 })
 
 const i18n = new VueI18n({

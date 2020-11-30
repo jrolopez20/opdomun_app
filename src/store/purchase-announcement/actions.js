@@ -2,16 +2,18 @@ import { axiosInstance } from 'boot/axios'
 import { PaginatedResult } from 'components/utils'
 
 /**
- * Load all offices
+ * Load purchase announcements
  * @param commit
+ * @param rowsPerPage
+ * @param page
  * @returns {Promise<any>}
  */
-export function loadOffices ({ commit }, { rowsPerPage, page, filter }) {
+export function loadPurchaseAnnouncements ({ commit }, { rowsPerPage, page }) {
   return new Promise((resolve, reject) => {
-    axiosInstance.get(`offices?limit=${rowsPerPage}&page=${page}&filter=${filter}`)
+    axiosInstance.get(`published_subscriptions?limit=${rowsPerPage}&page=${page}`)
       .then(response => {
         const result = PaginatedResult(response)
-        commit('FETCH_OFFICES', result)
+        commit('FETCH_PURCHASE_ANNOUNCEMENTS', result)
         resolve(response)
       })
       .catch((e) => {

@@ -1,4 +1,5 @@
 import { axiosInstance } from 'boot/axios'
+import { PaginatedResult } from 'components/utils'
 
 /**
  * Load all posts
@@ -19,7 +20,8 @@ export function loadPosts ({ commit }, { rowsPerPage, page, filter }) {
   return new Promise((resolve, reject) => {
     axiosInstance.get(`published_posts?limit=${rowsPerPage}&page=${page}${params}`)
       .then(response => {
-        commit('FETCH_POSTS', response.data)
+        const result = PaginatedResult(response)
+        commit('FETCH_POSTS', result)
         resolve(response)
       })
       .catch((e) => {

@@ -1,4 +1,5 @@
 import { axiosInstance } from 'boot/axios'
+import { PaginatedResult } from 'components/utils'
 
 /**
  * Load all articles
@@ -9,7 +10,8 @@ export function loadArticles ({ commit }, { rowsPerPage, page, filter }) {
   return new Promise((resolve, reject) => {
     axiosInstance.get(`articles?limit=${rowsPerPage}&page=${page}&filter=${filter}`)
       .then(response => {
-        commit('FETCH_ARTICLES', response.data)
+        const result = PaginatedResult(response)
+        commit('FETCH_ARTICLES', result)
         resolve(response)
       })
       .catch((e) => {

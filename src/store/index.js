@@ -10,6 +10,7 @@ import office from './office'
 import subscription from './subscription'
 import article from './article'
 import variableAu from './variable_au'
+import purchaseAnnouncement from './purchase-announcement'
 
 Vue.use(Vuex)
 
@@ -33,7 +34,8 @@ export default function (/* { ssrContext } */) {
       office,
       subscription,
       article,
-      variableAu
+      variableAu,
+      purchaseAnnouncement
     },
 
     // enable strict mode (adds overhead!)

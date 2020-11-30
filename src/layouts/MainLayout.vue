@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr fff" class="bg-grey-1">
+  <q-layout view="lHh Lpr fff" class="background">
     <q-header elevated dark class="bg-primary text-white" height-hint="54">
       <q-toolbar class="GPL__toolbar" style="height: 54px">
         <q-btn
@@ -22,7 +22,8 @@
         <q-space/>
 
         <q-tabs v-if="$q.screen.gt.xs" style="height: 54px">
-          <q-route-tab v-for="item in links1"
+          <q-route-tab no-caps
+                       v-for="item in links1"
                        :key="item.text"
                        :to="item.link"
                        :label="item.textAbreviate || item.text"
@@ -41,7 +42,7 @@
               </q-item>
             </q-list>
           </q-btn-dropdown>
-          <q-route-tab label="Entrar" to="/login" v-if="!isLoggedIn"/>
+          <q-route-tab no-caps label="Entrar" to="/login" v-if="!isLoggedIn"/>
         </q-tabs>
       </q-toolbar>
     </q-header>
@@ -87,7 +88,7 @@
           <a href="https://backoffice.opdomun.com" target="_blank" style="text-decoration: none;">
             <q-item clickable class="GPL__drawer-item">
               <q-item-section avatar>
-                <q-icon name="security"/>
+                <q-icon name="las la-user-shield"/>
               </q-item-section>
               <q-item-section>
                 <q-item-label>Area de agentes</q-item-label>
@@ -125,15 +126,16 @@ export default {
       leftDrawerOpen: false,
       showLoginDialog: false,
       links1: [
-        { icon: 'home', text: 'Casas en venta', link: '/casas-en-venta' },
-        { icon: 'people', text: 'Oficinas Opdomun', link: '/oficinas' },
-        { icon: 'photo_album', text: 'Blog', link: '/blog' },
-        { icon: 'assistant', text: 'Quienes somos', link: '/quienes-somos' },
-        { icon: 'help', text: 'Preguntas frecuentes', textAbreviate: 'FAQ', link: '/preguntas-frecuentes' }
+        { icon: 'las la-home', text: 'Casas en venta', link: '/casas-en-venta' },
+        { icon: 'las la-comment-dollar', text: 'Compro casa', link: '/compro-casa' },
+        { icon: 'las la-user-friends', text: 'Oficinas Opdomun', link: '/oficinas' },
+        { icon: 'las la-book', text: 'Blog', link: '/blog' },
+        { icon: 'las la-users', text: 'Quienes somos', link: '/quienes-somos' },
+        { icon: 'las la-question-circle', text: 'Preguntas frecuentes', textAbreviate: 'FAQ', link: '/preguntas-frecuentes' }
       ],
       links2: [
-        { icon: 'stars', text: 'Publicar casa', link: '/anuncio/nuevo' },
-        { icon: 'mail', text: 'Suscríbete', link: '/suscribirse' }
+        { icon: 'las la-tag', text: 'Crear anuncio de venta', link: '/nuevo-anuncio-de-venta' },
+        { icon: 'las la-tag', text: 'Crear anuncio de compra', link: '/nuevo-anuncio-de-compra' }
       ]
     }
   },

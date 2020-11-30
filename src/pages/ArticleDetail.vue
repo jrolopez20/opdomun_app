@@ -4,7 +4,7 @@
     <div class="row wrap full-width q-px-sm">
       <div class="col-sm-8 col-12 q-pa-sm">
         <q-card>
-          <q-img :src="pictureBasePath + article.picture" style="max-height: 400px;"/>
+          <q-img :src="article.picture" style="max-height: 400px;"/>
 
           <q-card-section class="q-pb-sm">
             <q-btn
@@ -24,7 +24,7 @@
             </div>
             <div class="text-grey-8 text-body2 full-width">
               {{ article.user ? article.user.fullname : ''}}
-              <span class="q-px-sm">|</span> <q-icon name="la la-calendar" size="xs"/> {{ date().formatDate(article.created_at, 'DD/MM/YYYY') }}
+              <span class="q-px-sm">|</span> <q-icon name="la la-calendar" size="xs"/> {{ date().formatDate(article.createdAt, 'DD/MM/YYYY') }}
             </div>
           </q-card-section>
 
@@ -45,7 +45,6 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import { date } from 'quasar'
-import { config } from 'boot/axios'
 import Header from 'layouts/Header.vue'
 import FeaturedPosts from 'components/property/FeaturedPosts.vue'
 
@@ -63,10 +62,7 @@ export default {
   computed: {
     ...mapGetters('article', [
       'article'
-    ]),
-    pictureBasePath () {
-      return config.pathArticlePicture
-    }
+    ])
   },
   methods: {
     ...mapActions('article', [

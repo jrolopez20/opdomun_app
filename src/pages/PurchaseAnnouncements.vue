@@ -2,7 +2,6 @@
   <q-page class="flex flex-block">
     <Header :title="title"/>
     <div class="full-width q-px-sm">
-      <div class="text-h5 q-py-lg">Contacte con nuestra oficina más cercana</div>
       <q-table
               grid
               hide-header
@@ -18,7 +17,7 @@
       >
         <template v-slot:item="props">
           <div class="q-pa-sm col-xs-12 col-sm-6 col-md-4">
-            <SingleOffice :office="props.row"/>
+            <SinglePurchaseAnnouncement :announcement="props.row"/>
           </div>
         </template>
       </q-table>
@@ -29,18 +28,17 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import Header from 'layouts/Header.vue'
-import SingleOffice from '../components/office/SingleOffice'
+import SinglePurchaseAnnouncement from '../components/purchase-announcement/SinglePurchaseAnnouncement.vue'
 
 export default {
-  name: 'PageOffices',
-
+  name: 'PurchaseAnnouncements',
   components: {
     Header,
-    SingleOffice
+    SinglePurchaseAnnouncement
   },
   data () {
     return {
-      title: 'Nuestras oficinas',
+      title: 'Anuncios de compra',
       filter: '',
       loading: false,
       pagination: {
@@ -49,31 +47,32 @@ export default {
         rowsNumber: 0
       },
       columns: [
-        { name: 'province', label: 'url', field: 'province' },
-        { name: 'manager', label: 'default', field: 'manager' },
-        { name: 'phone', label: 'default', field: 'phone' },
-        { name: 'email', label: 'default', field: 'email' }
+        { name: 'provincia', label: 'default', field: 'provincia' },
+        { name: 'municipios', label: 'default', field: 'municipios' },
+        { name: 'homeTypes', label: 'default', field: 'homeTypes' },
+        { name: 'minPrice', label: 'default', field: 'minPrice' },
+        { name: 'maxPrice', label: 'default', field: 'maxPrice' }
       ],
       data: []
     }
   },
   computed: {
-    ...mapGetters('office', [
-      'offices'
+    ...mapGetters('purchaseAnnouncement', [
+      'purchaseAnnouncements'
     ])
   },
   methods: {
-    ...mapActions('office', [
-      'loadOffices'
+    ...mapActions('purchaseAnnouncement', [
+      'loadPurchaseAnnouncements'
     ]),
     onRequest (props) {
       const { page, rowsPerPage } = props.pagination
       this.loading = true
 
-      this.loadOffices({ rowsPerPage, page, filter: this.filter }).then(response => {
-        this.pagination.rowsNumber = this.offices.total
-        this.pagination.page = this.offices.page
-        this.data = this.offices.data
+      this.loadPurchaseAnnouncements({ rowsPerPage, page }).then(response => {
+        this.pagination.rowsNumber = this.purchaseAnnouncements.total
+        this.pagination.page = this.purchaseAnnouncements.page
+        this.data = this.purchaseAnnouncements.data
         this.loading = false
       })
     }

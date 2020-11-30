@@ -1,6 +1,6 @@
 <template>
   <q-card>
-    <q-img :src="pictureBasePath + article.picture" style="max-height: 400px;"/>
+    <q-img :src="article.picture" style="max-height: 400px;"/>
 
     <q-card-section class="q-pb-sm">
       <div class="col text-h6 ellipsis">
@@ -8,7 +8,7 @@
       </div>
       <div class="text-grey-8 text-body2 row no-wrap ">
         {{ article.user.fullname }}
-        <span class="q-px-sm">|</span> <q-icon name="la la-calendar" size="xs"/> {{ date().formatDate(article.created_at, 'DD/MM/YYYY') }}
+        <span class="q-px-sm">|</span> <q-icon name="la la-calendar" size="xs"/> {{ date().formatDate(article.createdAt, 'DD/MM/YYYY') }}
       </div>
     </q-card-section>
 
@@ -22,16 +22,10 @@
 
 <script>
 import { date } from 'quasar'
-import { config } from 'boot/axios'
 
 export default {
   name: 'SingleArticle',
   props: ['article'],
-  computed: {
-    pictureBasePath () {
-      return config.pathArticlePicture
-    }
-  },
   methods: {
     date () {
       return date

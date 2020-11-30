@@ -7,11 +7,6 @@ const axiosInstance = axios.create({
   baseURL: `${baseUrl}/api/`
 })
 
-const config = {
-  pathPostPicture: `${baseUrl}/images/post_pictures/`,
-  pathArticlePicture: `${baseUrl}/images/article_pictures/`
-}
-
 export default async ({ Vue, store }) => {
   /**
    * Http interceptor for server side error
@@ -46,4 +41,4 @@ export default async ({ Vue, store }) => {
   Vue.prototype.$axios = axiosInstance
 }
 
-export { axiosInstance, config }
+export { axiosInstance, baseUrl }
