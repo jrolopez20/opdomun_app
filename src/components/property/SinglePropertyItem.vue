@@ -1,11 +1,24 @@
 <template>
   <q-item>
-    <q-item-section thumbnail class="q-pl-md" style="justify-content: flex-start;">
+    <q-item-section thumbnail class="q-pl-xs" style="justify-content: flex-start;">
       <router-link
               :to="`casas-en-venta/${property.id}`"
               style="text-decoration: none"
       >
-        <img :src="property.images[0].url"/>
+        <q-img
+                v-if="property.images && property.images.length"
+                :src="property.images[0].url">
+          <template v-slot:error>
+            <div style="background-color: #ededed"
+                 class="text-grey-9 absolute-full flex flex-center">
+              <q-icon name="las la-camera" size="120px" class="flex-center"/>
+            </div>
+          </template>
+        </q-img>
+        <div v-else style="background-color: #ededed"
+             class="text-grey-9 flex flex-center">
+          <q-icon name="las la-camera" size="120px" class="flex-center"/>
+        </div>
       </router-link>
     </q-item-section>
 
@@ -48,6 +61,5 @@ export default {
   },
   mounted () {
   }
-
 }
 </script>

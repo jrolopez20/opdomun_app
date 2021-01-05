@@ -126,9 +126,10 @@ export default {
       leftDrawerOpen: false,
       showLoginDialog: false,
       links1: [
-        { icon: 'las la-home', text: 'Casas en venta', link: '/casas-en-venta' },
-        { icon: 'las la-comment-dollar', text: 'Compro casa', link: '/compro-casa' },
-        { icon: 'las la-user-friends', text: 'Oficinas Opdomun', link: '/oficinas' },
+        { icon: 'las la-', text: 'Casas en venta', link: '/casas-en-venta' },
+        { icon: 'las la-', text: 'Compro casa', link: '/compro-casa' },
+        { icon: 'las la-building', text: 'Oficinas Opdomun', link: '/oficinas' },
+        { icon: 'las la-calculator', text: 'Calculadora de impuestos', link: '/calcular-impuesto' },
         { icon: 'las la-book', text: 'Blog', link: '/blog' },
         { icon: 'las la-users', text: 'Quienes somos', link: '/quienes-somos' },
         { icon: 'las la-question-circle', text: 'Preguntas frecuentes', textAbreviate: 'FAQ', link: '/preguntas-frecuentes' }

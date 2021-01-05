@@ -1,15 +1,15 @@
 import { axiosInstance } from 'boot/axios'
 
 /**
- * Load all provincias
+ * Load all architectural typologies
  * @param commit
  * @returns {Promise<any>}
  */
-export function loadProvincias ({ commit }) {
+export function loadArchitecturalTypologies ({ commit }) {
   return new Promise((resolve, reject) => {
-    axiosInstance.get('provincias')
+    axiosInstance.get('architectural_typologies')
       .then(response => {
-        commit('FETCH_PROVINCIAS', response.data)
+        commit('FETCH_ARCHITECTURAL_TYPOLOGIES', response.data)
         resolve(response)
       })
       .catch((e) => {

@@ -28,6 +28,14 @@
        </div>
         <div class="copy-right q-py-md text-center text-body2">
             Copyright @ 2019 Opdomun Todos los derechos reservados
+            <p class="text-caption q-mb-none q-pb-none">
+                <router-link to="/politicas-de-privacidad" class="text-white" style="text-decoration: none">
+                    Politíca de privacidad
+                </router-link>
+                <router-link to="/condiciones-de-uso" class="text-white" style="text-decoration: none">
+                    Condiciones de uso
+                </router-link>
+            </p>
         </div>
     </footer>
 </template>

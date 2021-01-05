@@ -5,7 +5,10 @@ import auth from './auth'
 import post from './post'
 import provincia from './provincia'
 import municipio from './municipio'
+import localidad from './localidad'
 import hometype from './hometype'
+import architecturalTypology from './architectural_typology'
+import taxCalculator from './tax_calculator'
 import office from './office'
 import subscription from './subscription'
 import article from './article'
@@ -30,7 +33,10 @@ export default function (/* { ssrContext } */) {
       post,
       provincia,
       municipio,
+      localidad,
       hometype,
+      architecturalTypology,
+      taxCalculator,
       office,
       subscription,
       article,

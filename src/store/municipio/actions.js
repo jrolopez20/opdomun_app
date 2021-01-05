@@ -9,7 +9,7 @@ export function loadMunicipios ({ commit }, { provinciaId }) {
   return new Promise((resolve, reject) => {
     axiosInstance.get(`provincias/${provinciaId}/municipios`)
       .then(response => {
-        commit('FETCH_MUNICIPIOS', response.data.data)
+        commit('FETCH_MUNICIPIOS', response.data)
         resolve(response)
       })
       .catch((e) => {

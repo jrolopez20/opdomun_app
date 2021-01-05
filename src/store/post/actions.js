@@ -34,7 +34,7 @@ export function loadFeaturedPosts ({ commit }, { rowsPerPage, page }) {
   return new Promise((resolve, reject) => {
     axiosInstance.get(`featured_posts?limit=${rowsPerPage}&page=${page}`)
       .then(response => {
-        commit('FETCH_FEATURED_POSTS', response.data.data)
+        commit('FETCH_FEATURED_POSTS', response.data)
         resolve(response)
       })
       .catch((e) => {
