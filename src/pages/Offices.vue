@@ -45,7 +45,7 @@ export default {
       loading: false,
       pagination: {
         page: 1,
-        rowsPerPage: 20,
+        rowsPerPage: 24,
         rowsNumber: 0
       },
       columns: [
@@ -71,8 +71,8 @@ export default {
       this.loading = true
 
       this.loadOffices({ rowsPerPage, page, filter: this.filter }).then(response => {
-        this.pagination.rowsNumber = this.offices.total
-        this.pagination.page = this.offices.page
+        this.pagination.rowsNumber = Number(this.offices.total)
+        this.pagination.page = Number(this.offices.page)
         this.data = this.offices.data
         this.loading = false
       })

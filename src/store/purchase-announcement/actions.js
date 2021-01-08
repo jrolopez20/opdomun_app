@@ -8,9 +8,19 @@ import { PaginatedResult } from 'components/utils'
  * @param page
  * @returns {Promise<any>}
  */
-export function loadPurchaseAnnouncements ({ commit }, { rowsPerPage, page }) {
+export function loadPurchaseAnnouncements ({ commit }, { rowsPerPage, page, filter }) {
+  let params = ''
+
+  if (filter) {
+    for (const key in filter) {
+      if (filter[key]) {
+        params += `&${key}=${filter[key]}`
+      }
+    }
+  }
+
   return new Promise((resolve, reject) => {
-    axiosInstance.get(`published_subscriptions?limit=${rowsPerPage}&page=${page}`)
+    axiosInstance.get(`published_subscriptions?limit=${rowsPerPage}&page=${page}${params}`)
       .then(response => {
         const result = PaginatedResult(response)
         commit('FETCH_PURCHASE_ANNOUNCEMENTS', result)

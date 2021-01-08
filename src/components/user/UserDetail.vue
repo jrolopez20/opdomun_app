@@ -7,35 +7,7 @@
             <q-card-section>
                 <div class="row">
                     <div class="col-sm-6 col-12 q-pa-xs">
-                        <q-input outlined dense required
-                                 v-model="user.numid"
-                                 :label="this.$t('common.labels.numId')"
-                                 :rules="[
-                                        val => val && val.length > 0 || this.$t('common.errors.required'),
-                                        val => val.length <= 11 || 'Please use maximum 11 characters'
-                                     ]"
-                        >
-                            <template v-slot:prepend>
-                                <q-icon name="las la-id-card"/>
-                            </template>
-                        </q-input>
-                    </div>
-                    <div class="col-sm-6 col-12 q-pa-xs">
-                        <q-input outlined dense required
-                                 v-model="user.fullname"
-                                 :label="this.$t('common.labels.fullName')"
-                                 :rules="[
-                                        val => val && val.length > 0 || this.$t('common.errors.required'),
-                                        val => val.length <= 50 || 'Please use maximum 50 characters'
-                                     ]"
-                        >
-                            <template v-slot:prepend>
-                                <q-icon name="las la-user"/>
-                            </template>
-                        </q-input>
-                    </div>
-                    <div class="col-sm-6 col-12 q-pa-xs">
-                        <q-input outlined dense required
+                        <q-input outlined dense required rounded
                                  v-model="user.email"
                                  :label="this.$t('common.labels.email')"
                                  :rules="[
@@ -49,7 +21,31 @@
                         </q-input>
                     </div>
                     <div class="col-sm-6 col-12 q-pa-xs">
-                        <q-input outlined dense required
+                        <q-input outlined dense required rounded
+                                 v-model="user.fullname"
+                                 :label="this.$t('common.labels.fullName')"
+                                 :rules="[
+                                        val => val && val.length > 0 || this.$t('common.errors.required'),
+                                        val => val.length <= 50 || 'Please use maximum 50 characters'
+                                     ]"
+                        >
+                            <template v-slot:prepend>
+                                <q-icon name="las la-user"/>
+                            </template>
+                        </q-input>
+                    </div>
+                    <div class="col-sm-6 col-12 q-pa-xs">
+                        <q-input outlined dense rounded
+                                 v-model="user.numid"
+                                 :label="this.$t('common.labels.numId')"
+                        >
+                            <template v-slot:prepend>
+                                <q-icon name="las la-id-card"/>
+                            </template>
+                        </q-input>
+                    </div>
+                    <div class="col-sm-6 col-12 q-pa-xs">
+                        <q-input outlined dense required rounded
                                  v-model="user.telephone"
                                  :label="this.$t('common.labels.phone')"
                                  :rules="[
@@ -68,7 +64,12 @@
             <q-separator inset />
 
             <q-card-actions align="right" class="q-py-md q-pr-md">
-                <q-btn no-caps outline color="primary" :label="this.$t('common.labels.save')" @click="onSubmit"/>
+                <q-btn no-caps
+                       rounded
+                       color="primary"
+                       class="q-px-lg"
+                       :label="this.$t('common.labels.save')"
+                       @click="onSubmit"/>
             </q-card-actions>
         </q-form>
     </q-card>
@@ -81,7 +82,6 @@ import Notification from '../../services/notification.service'
 
 export default {
   name: 'UserDetail',
-
   data () {
     return {
       user: {},

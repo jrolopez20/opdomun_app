@@ -27,6 +27,7 @@ export default {
       add: 'Adicionar',
       set: 'Modificar',
       delete: 'Eliminar',
+      edit: 'Editar',
       confirm: 'Confirmar',
       confirmDelete: '¿Está seguro que desea eliminar este elemento?',
       publishedAt: 'Publicado',
@@ -111,7 +112,8 @@ export default {
       paisaje_agricola: 'Paisaje agrícola',
       moviliario: 'Moviliario',
       electrodomesticos: 'Electrodomésticos',
-      sold_with_menaje: '¿Se vende con todo el menaje?'
+      sold_with_menaje: '¿Se vende con todo el menaje?',
+      currency: 'Moneda'
     },
     errors: {
       format: 'Formato incorrecto',

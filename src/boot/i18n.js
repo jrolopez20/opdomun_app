@@ -9,7 +9,7 @@ Vue.filter('toCurrency', price => {
     return price
   }
   if (!price.value) {
-    return null
+    return 'Gratis'
   }
   const value = price.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
   return `${value} ${price.currency}`

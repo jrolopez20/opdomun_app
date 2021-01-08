@@ -56,10 +56,13 @@
                     </div>
                     <div class="col-sm-5 col-12 q-pa-sm">
                         <q-input
-                                outlined dense rounded
+                                outlined dense required rounded
                                 v-model.number="property.minPrice"
                                 type="number"
                                 label="Precio min"
+                                :rules="[
+                                  val => val || this.$t('common.errors.required')
+                                ]"
                         >
                             <template v-slot:prepend>
                                 <q-icon name="las la-dollar-sign"/>
@@ -168,16 +171,7 @@
             </q-form>
         </q-card-section>
         <q-card-actions align="right" class="q-pr-lg q-mb-lg">
-            <q-btn no-caps outline rounded
-                   class="q-px-sm"
-                   color="primary"
-                   :label="this.$t('common.labels.cancel')"
-                   @click="$router.back()"/>
-            <q-btn no-caps rounded
-                   class="q-px-sm"
-                   color="primary"
-                   label="Guardar"
-                   @click="onSubmit"/>
+            <q-btn no-caps rounded class="q-px-sm" color="primary" label="Guardar" @click="onSubmit"/>
         </q-card-actions>
     </q-card>
 </template>
@@ -189,9 +183,9 @@ import Notification from '../services/notification.service'
 
 export default {
   name: 'Subscription',
+
   data () {
     return {
-      editMode: false,
       currency: 'CUP',
       property: {
         provincia: null,
@@ -226,9 +220,6 @@ export default {
       'subscription'
     ])
   },
-  watch: {
-    subscription: 'onSubscriptionChange'
-  },
   methods: {
     ...mapActions('provincia', [
       'loadProvincias'
@@ -242,7 +233,6 @@ export default {
     ]),
     ...mapActions('subscription', [
       'addSubscription',
-      'editSubscription',
       'loadSubscription'
     ]),
     onProvinciaChange () {
@@ -257,57 +247,32 @@ export default {
           Loading.show()
           this.property = {
             ...this.property,
-            minPrice: this.property.minPrice ? {
+            minPrice: {
               value: this.property.minPrice,
               currency: this.currency
-            } : null,
+            },
             maxPrice: {
               value: this.property.maxPrice,
               currency: this.currency
             }
           }
-          if (this.editMode) {
-            this.editSubscription(this.property).then(() => {
-              Loading.hide()
-              Notification.showSucces('La subscripción ha sido modificada satisfactoriamente')
-              this.$router.push('/compro-casa')
-            }).catch(() => {
-              Loading.hide()
-            })
-          } else {
-            this.addSubscription(this.property).then(() => {
-              Loading.hide()
-              Notification.showSucces('La subscripción ha sido registrada satisfactoriamente')
-              this.$router.push('/compro-casa')
-            }).catch(() => {
-              Loading.hide()
-            })
-          }
+          this.addSubscription(this.property).then(() => {
+            Loading.hide()
+            Notification.showSucces('La subscripción ha sido modificada satisfactoriamente')
+            this.$router.push('/compro-casa')
+          }).catch(() => {
+            Loading.hide()
+          })
         } else {
           Notification.showWarning('Por favor completar los campos correctamente')
         }
       })
-    },
-    onSubscriptionChange (subscription) {
-      this.currency = subscription.maxPrice.currency
-      this.property = {
-        ...{
-          ...subscription,
-          owner: { ...subscription.owner },
-          minPrice: subscription.minPrice.value,
-          maxPrice: subscription.maxPrice.value
-        }
-      }
     }
   },
   mounted () {
     this.loadProvincias()
     this.loadHomeTypes()
-
-    if (this.$route.params.id) {
-      this.editMode = true
-      this.loadSubscription({ id: this.$route.params.id })
-    }
+    this.loadSubscription({ id: this.$route.params.id })
   }
 }
 </script>

@@ -76,8 +76,8 @@ export default {
       this.loading = true
 
       this.loadArticles({ rowsPerPage, page, filter: this.filter }).then(response => {
-        this.pagination.rowsNumber = this.articles.total
-        this.pagination.page = this.articles.page
+        this.pagination.rowsNumber = Number(this.articles.total)
+        this.pagination.page = Number(this.articles.page)
         this.data = this.articles.data
         this.loading = false
       })

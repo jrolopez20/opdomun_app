@@ -1,5 +1,7 @@
 import { Cookies } from 'quasar'
 
+export const OPDOMUN_KEY = 'opdomun'
+
 let cookies = null
 
 export default async ({ store, ssrContext }/* { app, router, Vue ... } */) => {

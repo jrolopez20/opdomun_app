@@ -85,7 +85,7 @@
                       <div class="col-sm-6 col-12 q-px-sm">
                           <div class="row">
                               <div class="col">
-                                  <q-icon name="las la-heart" size="xs"/> Estado
+                                  <q-icon name="las la-house-damage" size="xs"/> Estado
                               </div>
                               <div class="col-auto text-weight-medium">{{ post.buildStatus }}</div>
                           </div>
@@ -94,32 +94,23 @@
                       <div class="col-sm-6 col-12 q-px-sm">
                           <div class="row">
                               <div class="col">
-                                  <q-icon name="las la-landmark" size="xs"/> Tipo de vivienda
+                                  <q-icon name="las la-building" size="xs"/> Tipo de vivienda
                               </div>
                               <div class="col-auto text-right text-weight-medium">{{ post.homeType ? post.homeType.title : '' }}</div>
                           </div>
                           <q-separator class="q-my-sm"/>
                       </div>
                       <div class="col-12 q-px-sm">
-                          <div class="q-px-sm">Otros espacios:</div>
+                          <div class="q-px-sm">
+                              <q-icon name="las la-door-open" size="sm"/> Otros espacios:
+                          </div>
                           <q-chip square v-for="place in post.postPlaces" :key="place.id">
                               {{ place.title }}
                           </q-chip>
                       </div>
-                      <div class="col-12 q-px-sm">
-                          <q-separator class="q-my-sm"/>
-                          <div class="row">
-                              <div class="col">
-                                  Informe técnico
-                              </div>
-                              <div class="col-auto text-right text-weight-medium ">
-                                  <a class="text-primary" style="text-decoration: none"
-                                     :href="apiURL + `posts/${post.id}/report`"
-                                     rel="noopener noreferrer"
-                                     target="_blank"
-                                  >Descargar</a>
-                              </div>
-                          </div>
+                      <div class="col-12 q-px-sm text-center">
+                          <q-separator class="q-my-md"/>
+                          <q-btn flat no-caps type="a" :href="apiURL + `posts/${post.id}/report`" target="_blank" rel="noopener noreferrer" label="Ver informe técnico" color="primary" />
                       </div>
 
                   </div>

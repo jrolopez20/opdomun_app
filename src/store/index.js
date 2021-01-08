@@ -14,6 +14,7 @@ import subscription from './subscription'
 import article from './article'
 import variableAu from './variable_au'
 import purchaseAnnouncement from './purchase-announcement'
+import ourServices from './our_services'
 
 Vue.use(Vuex)
 
@@ -41,7 +42,8 @@ export default function (/* { ssrContext } */) {
       subscription,
       article,
       variableAu,
-      purchaseAnnouncement
+      purchaseAnnouncement,
+      ourServices
     },
 
     // enable strict mode (adds overhead!)

@@ -7,10 +7,6 @@ export function roles () {
   }
 }
 
-export function entryPoint () {
-  return 'portal'
-}
-
 export function availableRoles (state) {
   return state.roles
 }

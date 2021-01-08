@@ -1,29 +1,18 @@
 import { axiosInstance } from 'boot/axios'
-import { CookieHandler } from 'boot/cookies'
-const OPDOMUN_KEY = 'opdomun'
-/**
- * Execute the login
- * @param dispatch
- * @param commit
- * @param user
- * @returns {Promise<any>}
- */
+import { CookieHandler, OPDOMUN_KEY } from 'boot/cookies'
+
 export function login ({ dispatch, commit, getters }, user) {
   return new Promise((resolve, reject) => {
-    axiosInstance.post('login', {
-      ...user,
-      entry_point: getters.entryPoint
-    })
+    axiosInstance.post('login', { ...user })
       .then(response => {
-        const accessToken = response.data.access_token
-        const user = response.data.user
+        const accessToken = response.data
         CookieHandler.set(OPDOMUN_KEY, {
-          accessToken,
-          user
+          accessToken
         })
         dispatch('setAuthorizationHeader', accessToken)
+        dispatch('getAuthenticatedUser')
 
-        commit('SET_AUTH_CREDENTIALS', { accessToken, user })
+        commit('SET_ACCESS_TOKEN', accessToken)
         resolve(response)
       })
       .catch((e) => {
@@ -32,11 +21,6 @@ export function login ({ dispatch, commit, getters }, user) {
   })
 }
 
-/**
- * Execute the logout
- * @param commit
- * @returns {Promise<any>}
- */
 export function logout ({ commit }) {
   return new Promise((resolve, reject) => {
     CookieHandler.remove(OPDOMUN_KEY)
@@ -47,13 +31,6 @@ export function logout ({ commit }) {
   })
 }
 
-/**
- * Change user password
- * @param commit
- * @param user
- * @param newpassword
- * @returns {Promise<any>}
- */
 export function changePassword ({ commit }, { user, password }) {
   return new Promise((resolve, reject) => {
     axiosInstance.post(`users/${user.id}/password`, { password })
@@ -83,7 +60,7 @@ export function setUserDetail ({ commit, state }, user) {
           ...config,
           user
         })
-        commit('SET_AUTH_CREDENTIALS', { user })
+        commit('SET_AUTH_CREDENTIALS', user)
         resolve(response)
       })
       .catch((e) => {
@@ -92,11 +69,6 @@ export function setUserDetail ({ commit, state }, user) {
   })
 }
 
-/**
- * Load all avilable roles
- * @param commit
- * @returns {Promise<any>}
- */
 export function getAvailableRoles ({ commit }) {
   return new Promise((resolve, reject) => {
     axiosInstance.get('roles')
@@ -110,15 +82,32 @@ export function getAvailableRoles ({ commit }) {
   })
 }
 
+export function getAuthenticatedUser ({ commit }) {
+  return new Promise((resolve, reject) => {
+    axiosInstance.get('authenticated_user')
+      .then(response => {
+        const config = CookieHandler.get(OPDOMUN_KEY)
+        const user = response.data
+        CookieHandler.set(OPDOMUN_KEY, {
+          ...config,
+          user
+        })
+        commit('SET_AUTH_CREDENTIALS', user)
+        resolve(response)
+      })
+      .catch((e) => {
+        reject(e)
+      })
+  })
+}
+
 export function initDefaultCredentials ({ dispatch, commit }) {
   return new Promise((resolve, reject) => {
     if (CookieHandler.exist(OPDOMUN_KEY)) {
-      const accessToken = CookieHandler.get(OPDOMUN_KEY).accessToken
-      dispatch('setAuthorizationHeader', accessToken)
-      commit('SET_AUTH_CREDENTIALS', {
-        accessToken: accessToken,
-        user: CookieHandler.get(OPDOMUN_KEY).user
-      })
+      const config = CookieHandler.get(OPDOMUN_KEY)
+      dispatch('setAuthorizationHeader', config.accessToken)
+      commit('SET_ACCESS_TOKEN', config.accessToken)
+      commit('SET_AUTH_CREDENTIALS', config.user)
     }
     resolve()
   })

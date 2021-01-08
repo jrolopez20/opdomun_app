@@ -28,20 +28,21 @@
                        :to="item.link"
                        :label="item.textAbreviate || item.text"
           />
-          <q-btn-dropdown auto-close stretch flat
-                          icon="las la-user"
-                          v-if="isLoggedIn"
-          >
-            <q-list>
-              <q-item clickable to="/profile">
-                <q-item-section>Mi Opdomun</q-item-section>
-              </q-item>
+          <q-btn stretch flat no-icon
+                 icon="las la-user"
+                 v-if="isLoggedIn">
+            <q-menu>
+              <q-list>
+                <q-item clickable to="/profile">
+                  <q-item-section>Mi Opdomun</q-item-section>
+                </q-item>
 
-              <q-item clickable @click="onLogout">
-                <q-item-section>Cerrar sesión</q-item-section>
-              </q-item>
-            </q-list>
-          </q-btn-dropdown>
+                <q-item clickable @click="onLogout">
+                  <q-item-section>Cerrar sesión</q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </q-btn>
           <q-route-tab no-caps label="Entrar" to="/login" v-if="!isLoggedIn"/>
         </q-tabs>
       </q-toolbar>
@@ -126,16 +127,16 @@ export default {
       leftDrawerOpen: false,
       showLoginDialog: false,
       links1: [
-        { icon: 'las la-', text: 'Casas en venta', link: '/casas-en-venta' },
-        { icon: 'las la-', text: 'Compro casa', link: '/compro-casa' },
+        { icon: 'las la-shopping-bag', text: 'Casas en venta', link: '/casas-en-venta' },
+        { icon: 'las la-shopping-cart', text: 'Compro casa', link: '/compro-casa' },
         { icon: 'las la-building', text: 'Oficinas Opdomun', link: '/oficinas' },
-        { icon: 'las la-calculator', text: 'Calculadora de impuestos', link: '/calcular-impuesto' },
         { icon: 'las la-book', text: 'Blog', link: '/blog' },
         { icon: 'las la-users', text: 'Quienes somos', link: '/quienes-somos' },
         { icon: 'las la-question-circle', text: 'Preguntas frecuentes', textAbreviate: 'FAQ', link: '/preguntas-frecuentes' }
       ],
       links2: [
-        { icon: 'las la-tag', text: 'Crear anuncio de venta', link: '/nuevo-anuncio-de-venta' },
+        { icon: 'las la-calculator', text: 'Calculadora de impuestos', link: '/calcular-impuesto' },
+        // { icon: 'las la-tag', text: 'Crear anuncio de venta', link: '/nuevo-anuncio-de-venta' },
         { icon: 'las la-tag', text: 'Crear anuncio de compra', link: '/nuevo-anuncio-de-compra' }
       ]
     }

@@ -1,8 +1,9 @@
-export function SET_AUTH_CREDENTIALS (state, data) {
-  if (typeof data.accessToken !== 'undefined') {
-    state.accessToken = data.accessToken
-  }
-  state.user = data.user
+export function SET_ACCESS_TOKEN (state, accessToken) {
+  state.accessToken = accessToken
+}
+
+export function SET_AUTH_CREDENTIALS (state, user) {
+  state.user = user
 }
 
 export function LOGOUT (state) {

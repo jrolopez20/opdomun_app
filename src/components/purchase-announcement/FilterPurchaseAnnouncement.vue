@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-xs-12 col-md">
             <div class="row">
-              <div class="col-md-3 col-sm-6 col-12 q-pa-sm">
+              <div class="col-md-4 col-sm-6 col-12 q-pa-sm">
                 <q-select dark outlined dense emit-value map-options rounded
                           v-model="property.provinciaId"
                           :options="provincias"
@@ -19,34 +19,20 @@
                   </template>
                 </q-select>
               </div>
-              <div class="col-md-3 col-sm-6 col-12 q-pa-sm">
+              <div class="col-md-4 col-sm-6 col-12 q-pa-sm">
                 <q-select dark outlined dense emit-value map-options rounded
                           v-model="property.municipioId"
                           :options="municipios"
                           :label="this.$t('common.labels.municipio')"
                           option-value="id"
                           option-label="title"
-                          @input="onMunicipioChange"
                 >
                   <template v-slot:prepend>
                     <q-icon name="las la-map-marker"/>
                   </template>
                 </q-select>
               </div>
-              <div class="col-md-3 col-sm-6 col-12 q-pa-sm">
-                <q-select dark outlined dense emit-value map-options rounded
-                          v-model="property.localidadId"
-                          :options="localidades"
-                          :label="this.$t('common.labels.localidad')"
-                          option-value="id"
-                          option-label="title"
-                >
-                  <template v-slot:prepend>
-                    <q-icon name="las la-map-marker"/>
-                  </template>
-                </q-select>
-              </div>
-              <div class="col-md-3 col-sm-6 col-12 q-pa-sm">
+              <div class="col-md-4 col-sm-6 col-12 q-pa-sm">
                 <q-select dark outlined dense emit-value map-options rounded
                         v-model="property.homeTypeId"
                         :label="this.$t('common.labels.homeType')"
@@ -135,13 +121,12 @@ import { mapGetters, mapActions } from 'vuex'
 import Notification from '../../services/notification.service'
 
 export default {
-  name: 'FilterProperty',
+  name: 'FilterPurchaseAnnouncement',
   data () {
     return {
       property: {
         provinciaId: null,
         municipioId: null,
-        localidadId: null,
         homeTypeId: null,
         minPrice: null,
         maxPrice: null,
@@ -157,20 +142,11 @@ export default {
     ...mapGetters('municipio', [
       'municipios'
     ]),
-    ...mapGetters('localidad', [
-      'localidades'
-    ]),
     ...mapGetters('hometype', [
       'homeTypes'
-    ]),
-    ...mapGetters('post', [
-      'filters'
     ])
   },
   methods: {
-    ...mapActions('post', [
-      'setFilters'
-    ]),
     ...mapActions('provincia', [
       'loadProvincias'
     ]),
@@ -178,31 +154,20 @@ export default {
       'loadMunicipios',
       'clearMunicipios'
     ]),
-    ...mapActions('localidad', [
-      'loadLocalidades',
-      'clearLocalidades'
-    ]),
     ...mapActions('hometype', [
       'loadHomeTypes'
     ]),
     onProvinciaChange (provinciaId) {
       if (this.property.provinciaId) {
         this.property.municipioId = null
-        this.property.localidadId = null
-        this.clearLocalidades()
         this.clearMunicipios()
         this.loadMunicipios({ provinciaId })
       }
-    },
-    onMunicipioChange (municipioId) {
-      this.property.localidadId = null
-      this.loadLocalidades({ municipioId })
     },
     onSubmit () {
       this.$refs.filterForm.validate().then(success => {
         if (success) {
           const filters = { ...this.property }
-          this.setFilters({ filters })
           this.$emit('onSearch', filters)
         } else {
           Notification.showWarning('Por favor completar los campos correctamente')
@@ -213,7 +178,6 @@ export default {
       this.property = {
         provinciaId: null,
         municipioId: null,
-        localidadId: null,
         homeTypeId: null,
         minPrice: null,
         maxPrice: null,
@@ -221,14 +185,13 @@ export default {
         bathrooms: null
       }
       this.clearMunicipios()
-      this.clearLocalidades()
     }
   },
   mounted () {
     this.loadProvincias()
     this.loadHomeTypes()
-    if (this.filters) {
-      this.property = { ...this.filters }
+    if (this.purchaseFilters) {
+      this.property = { ...this.purchaseFilters }
     }
   }
 }

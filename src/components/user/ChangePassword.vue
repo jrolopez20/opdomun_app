@@ -7,7 +7,8 @@
             <q-card-section>
                 <div class="row">
                     <div class="col-xs-12 col-md-6 q-pa-xs">
-                        <q-input outlined dense v-model="newpassword" :type="isPwd ? 'password' : 'text'"
+                        <q-input outlined dense rounded
+                                 v-model="newpassword" :type="isPwd ? 'password' : 'text'"
                                  :label="this.$t('common.labels.password')"
                                  required
                                  :rules="[
@@ -25,7 +26,8 @@
                         </q-input>
                     </div>
                     <div class="col-xs-12 col-md-6 q-pa-xs">
-                        <q-input outlined dense v-model="repassword" :type="isPwd2 ? 'password' : 'text'"
+                        <q-input outlined dense rounded
+                                 v-model="repassword" :type="isPwd2 ? 'password' : 'text'"
                                  :label="this.$t('common.labels.repeatPassword')"
                                  :rules="[
                                             val => val === newpassword || this.$t('common.errors.passwordMatch')
@@ -46,7 +48,10 @@
             <q-separator inset />
 
             <q-card-actions align="right" class="q-py-md q-pr-md">
-                <q-btn no-caps outline color="primary" @click="setPassword">Cambiar contraseña</q-btn>
+                <q-btn no-caps rounded
+                       color="primary"
+                       class="q-px-lg"
+                       @click="setPassword">Cambiar contraseña</q-btn>
             </q-card-actions>
         </q-form>
     </q-card>

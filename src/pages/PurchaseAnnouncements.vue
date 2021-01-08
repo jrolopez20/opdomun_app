@@ -1,27 +1,30 @@
 <template>
   <q-page class="flex flex-block">
     <Header :title="title"/>
-    <div class="full-width q-px-sm">
-      <q-table
-              grid
-              hide-header
-              :data="data"
-              :columns="columns"
-              row-key="id"
-              :pagination.sync="pagination"
-              :loading="loading"
-              :filter="filter"
-              @request="onRequest"
-              binary-state-sort
-              class="q-pb-lg"
-      >
-        <template v-slot:item="props">
-          <div class="q-pa-sm col-xs-12 col-sm-6 col-md-4">
-            <SinglePurchaseAnnouncement :announcement="props.row"/>
-          </div>
-        </template>
-      </q-table>
-    </div>
+    <FilterPurchaseAnnouncement
+            class="q-mb-lg full-width"
+            @onSearch="updateFilter"
+    />
+
+    <q-table
+            grid
+            hide-header
+            :data="data"
+            :columns="columns"
+            row-key="id"
+            :pagination.sync="pagination"
+            :loading="loading"
+            :filter="filter"
+            @request="onRequest"
+            binary-state-sort
+            class="q-pb-lg full-width"
+    >
+      <template v-slot:item="props">
+        <div class="q-pa-sm col-xs-12 col-sm-6 col-md-4">
+          <SinglePurchaseAnnouncement :announcement="props.row"/>
+        </div>
+      </template>
+    </q-table>
   </q-page>
 </template>
 
@@ -29,21 +32,23 @@
 import { mapActions, mapGetters } from 'vuex'
 import Header from 'layouts/Header.vue'
 import SinglePurchaseAnnouncement from '../components/purchase-announcement/SinglePurchaseAnnouncement.vue'
+import FilterPurchaseAnnouncement from 'components/purchase-announcement/FilterPurchaseAnnouncement.vue'
 
 export default {
   name: 'PurchaseAnnouncements',
   components: {
     Header,
-    SinglePurchaseAnnouncement
+    SinglePurchaseAnnouncement,
+    FilterPurchaseAnnouncement
   },
   data () {
     return {
       title: 'Anuncios de compra',
-      filter: '',
+      filter: null,
       loading: false,
       pagination: {
         page: 1,
-        rowsPerPage: 20,
+        rowsPerPage: 24,
         rowsNumber: 0
       },
       columns: [
@@ -69,12 +74,15 @@ export default {
       const { page, rowsPerPage } = props.pagination
       this.loading = true
 
-      this.loadPurchaseAnnouncements({ rowsPerPage, page }).then(response => {
-        this.pagination.rowsNumber = this.purchaseAnnouncements.total
-        this.pagination.page = this.purchaseAnnouncements.page
+      this.loadPurchaseAnnouncements({ rowsPerPage, page, filter: this.filter }).then(response => {
+        this.pagination.rowsNumber = Number(this.purchaseAnnouncements.total)
+        this.pagination.page = Number(this.purchaseAnnouncements.page)
         this.data = this.purchaseAnnouncements.data
         this.loading = false
       })
+    },
+    updateFilter (purchaseFilters) {
+      this.filter = { ...purchaseFilters }
     }
   },
   meta () {

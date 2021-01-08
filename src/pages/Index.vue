@@ -8,9 +8,8 @@
 <!--            <h3 class="text-white text-left q-px-lg full-width">Miles de compradores registrados esperan por tu anuncio</h3>-->
 
             <div class="q-pa-md q-gutter-sm text-center">
-                <q-btn no-caps unelevated rounded color="primary" label="Casas en venta" to="/casas-en-venta" style="min-width: 250px"/>
                 <q-btn no-caps unelevated rounded color="primary" label="Publicar casa" to="/anuncio/nuevo" style="min-width: 250px"/>
-                <q-btn no-caps unelevated rounded color="primary" label="Subscripción de ofertas" to="/suscribirse" style="min-width: 250px"/>
+                <q-btn no-caps unelevated rounded color="primary" label="Crear anuncio de compra" to="/compro-casa/nuevo" style="min-width: 250px"/>
             </div>
         </q-parallax>
 

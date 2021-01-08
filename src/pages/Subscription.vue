@@ -2,8 +2,8 @@
   <q-page class="flex flex-block">
     <Header :title="title"/>
     <div class="row wrap full-width q-px-sm">
-      <div class="col-sm-8 col-12 q-pa-sm">
-        <div class="text-h5 q-py-lg">Aspectos de la casa que quiero comprar</div>
+      <div class="col-sm-8 col-12 ">
+        <div class="text-h5 q-pt-lg q-pb-md q-pl-lg">Aspectos de la casa que quiero comprar</div>
         <Subscription/>
       </div>
       <div class="col-sm-4 col-12 q-pa-sm">
@@ -27,12 +27,17 @@ export default {
   },
   data () {
     return {
-      title: 'Subscribirse'
+      title: 'Nuevo anuncio de compra'
     }
   },
   meta () {
     return {
       titleTemplate: title => `${this.title} - ${title}`
+    }
+  },
+  mounted () {
+    if (this.$route.params.id) {
+      this.title = 'Modificar anuncio de compra'
     }
   }
 }

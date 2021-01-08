@@ -5,9 +5,9 @@
       <div class="col-sm-8 col-12 q-pa-sm">
         <q-form ref="formTaxCalculator">
             <div class="text-h5 q-pt-lg q-pb-sm">Calcule el impuesto a pagar</div>
-          <div class="row">
+          <div class="row q-mt-lg">
             <div class="col-xs-12 col-md-4 q-pa-xs">
-              <q-select outlined dense required
+              <q-select outlined dense required rounded
                         v-model="provincia"
                         :options="provincias"
                         :label="this.$t('common.labels.provincia')"
@@ -21,7 +21,7 @@
               </q-select>
             </div>
             <div class="col-xs-12 col-md-4 q-pa-xs">
-              <q-select outlined dense required
+              <q-select outlined dense required rounded
                         v-model="municipio"
                         :options="municipios"
                         :label="this.$t('common.labels.municipio')"
@@ -35,7 +35,7 @@
               </q-select>
             </div>
             <div class="col-xs-12 col-md-4 q-pa-xs">
-              <q-select outlined dense required
+              <q-select outlined dense required rounded
                         v-model="localidad"
                         :options="localidades"
                         :label="this.$t('common.labels.localidad')"
@@ -48,7 +48,7 @@
               </q-select>
             </div>
             <div class="col-12 q-pa-xs">
-              <q-select outlined dense required emit-value map-options
+              <q-select outlined dense required emit-value map-options rounded
                         v-model="params.architecturalTypologyId"
                         :options="architecturalTypologies"
                         :label="this.$t('common.labels.architecturalTypology')"
@@ -62,7 +62,7 @@
             </div>
             <div class="col-xs-12 col-md-4 q-pa-xs">
               <q-input
-                      outlined dense
+                      outlined dense rounded
                       v-model.number="params.rooms"
                       type="number"
                       :label="this.$t('common.labels.bedrooms')"
@@ -119,8 +119,10 @@
             </div>
 
             <div class="col-12 q-gutter-sm text-right">
-              <q-btn outline no-caps color="primary" label="Limpiar" @click="clearForm()"/>
-              <q-btn no-caps color="primary" label="Calcular" @click="calculate()"/>
+              <q-btn outline no-caps rounded
+                     color="primary" label="Limpiar" @click="clearForm()"/>
+              <q-btn no-caps rounded
+                     color="primary" label="Calcular" @click="calculate()"/>
             </div>
           </div>
 

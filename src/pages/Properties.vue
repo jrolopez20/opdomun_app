@@ -47,8 +47,8 @@ export default {
       loading: false,
       pagination: {
         page: 1,
-        rowsPerPage: 20,
-        rowsNumber: 0
+        rowsPerPage: 24,
+        rowsNumber: 10
       },
       columns: [
         { name: 'address', label: 'url', field: 'address' },
@@ -78,9 +78,10 @@ export default {
     onRequest (props) {
       const { page, rowsPerPage } = props.pagination
       this.loading = true
+
       this.loadPosts({ rowsPerPage, page, filter: this.filter }).then(response => {
-        this.pagination.rowsNumber = this.posts.total
-        this.pagination.page = this.posts.page
+        this.pagination.rowsNumber = Number(this.posts.total)
+        this.pagination.page = Number(this.posts.page)
         this.data = this.posts.data
         this.loading = false
       })

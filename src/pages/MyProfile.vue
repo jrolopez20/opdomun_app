@@ -1,57 +1,46 @@
 <template>
-    <q-page class="flex flex-block">
+    <q-page>
         <Header :title="title" class="q-mb-md"/>
-
-        <q-card
-                flat bordered
-                class="q-pa-none q-my-md q-mx-lg full-width"
-                style="height: min-content;"
-        >
-            <q-card-section class="q-pa-none">
-                <q-splitter
-                        v-model="splitterModel"
+        <div class="q-px-sm q-pb-md full-width">
+            <q-card flat bordered class="full-width">
+                <q-tabs
+                        v-model="tab"
+                        dense
+                        class="text-grey"
+                        active-color="primary"
+                        indicator-color="primary"
+                        align="justify"
+                        narrow-indicator
                 >
-                    <template v-slot:before>
-                        <q-tabs
-                                v-model="tab"
-                                vertical
-                                class="text-primary"
-                        >
-                            <q-tab name="profile" icon="person" label="Informacion" />
-                            <q-tab name="security" icon="shield" label="Seguridad" />
-                            <q-tab name="subscription" icon="alarm" label="Suscripciones" />
-                        </q-tabs>
-                    </template>
+                    <q-tab name="profile" icon="las la-user" label="Datos personales"/>
+                    <q-tab name="subscription" icon="las la-shopping-cart" label="Mis anuncios de compra"/>
+                    <q-tab name="security" icon="las la-shield-alt" label="Seguridad"/>
+                </q-tabs>
 
-                    <template v-slot:after>
-                        <q-tab-panels
-                                v-model="tab"
-                                animated
-                                swipeable
-                                vertical
-                                transition-prev="jump-up"
-                                transition-next="jump-up"
-                        >
-                            <q-tab-panel name="profile" class="q-pa-none">
-                                <user-detail />
-                            </q-tab-panel>
+                <q-separator/>
 
-                            <q-tab-panel name="security" class="q-pa-none">
-                                <change-password />
-                            </q-tab-panel>
+                <q-tab-panels
+                        v-model="tab"
+                        animated
+                        swipeable
+                        infinite
+                        transition-prev="jump-up"
+                        transition-next="jump-up"
+                >
+                    <q-tab-panel name="profile" class="q-pa-none">
+                        <user-detail/>
+                    </q-tab-panel>
 
-                            <q-tab-panel name="subscription">
-                                <div class="text-h4 q-mb-md">Movies</div>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-                            </q-tab-panel>
-                        </q-tab-panels>
-                    </template>
+                    <q-tab-panel name="security" class="q-pa-none">
+                        <change-password/>
+                    </q-tab-panel>
 
-                </q-splitter>
-            </q-card-section>
-        </q-card>
+                    <q-tab-panel name="subscription">
+                        <Subscriptions/>
+                    </q-tab-panel>
+                </q-tab-panels>
+            </q-card>
+        </div>
     </q-page>
 </template>
 
@@ -59,11 +48,15 @@
 import Header from 'layouts/Header.vue'
 import ChangePassword from '../components/user/ChangePassword'
 import UserDetail from '../components/user/UserDetail'
+import Subscriptions from '../components/subscriptions/Subscriptions'
 
 export default {
   name: 'MyProfile',
   components: {
-    Header, ChangePassword, UserDetail
+    Header,
+    ChangePassword,
+    UserDetail,
+    Subscriptions
   },
   data () {
     return {

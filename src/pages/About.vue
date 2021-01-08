@@ -63,122 +63,29 @@
                 <div class="text-h4 text-dark text-center q-py-md">Nuestros servicios</div>
 
                 <div class="full-width row" style="font-size: 0.8rem;">
-                    <div class="col-sm-6 col-md-3 col-12 q-pa-sm">
-                        <q-card flat class="text-center bg-grey-4">
+                    <div  v-for="service in ourServices" :key="service.id"
+                            class="col-sm-6 col-md-3 col-12 q-pa-sm">
+                        <q-card>
                             <q-card-section>
-                                <div class="text-h6">
-                                    <i class="las la-bullhorn"></i> Anuncio Premium
+                                <div class="text-h6 text-center">
+                                    {{ service.title }}
                                 </div>
                             </q-card-section>
 
-                            <q-card-section class="q-py-none service-description">
-                                <div>Visita de un arquitecto.</div>
-                                <div>Publicación de su anuncio en Opdomun.</div>
-                                <div>Notificación de compradores interesados.</div>
-                                <div>Entrega de informe técnico.</div>
-                                <div>Publicidad en las Redes Sociales.</div>
-                                <div class="q-my-md text-body1">
-                                    <strong>30 cuc / 3 meses</strong>
-                                </div>
+                            <q-card-section class="q-py-none" v-html="service.description">
                             </q-card-section>
 
-                            <q-separator inset/>
+                            <q-card-section class="text-center text-h6 q-py-sm">
+                                <strong>{{ service.price | toCurrency }}</strong>
+                            </q-card-section>
 
-                            <q-card-actions>
-                                <q-btn flat no-caps
+                            <q-card-actions class="q-pt-none q-pb-md" align="center">
+                                <q-btn no-caps rounded
                                        color="primary"
-                                       class="full-width"
+                                       class="q-px-lg"
+                                       @click="onSelectService(service.type)"
                                 >
-                                    <span class="text-body1 text-bold">Seleccionar</span>
-                                </q-btn>
-                            </q-card-actions>
-                        </q-card>
-                    </div>
-
-                    <div class="col-sm-6 col-md-3 col-12 q-pa-sm">
-                        <q-card flat class="text-center bg-grey-4">
-                            <q-card-section>
-                                <div class="text-h6">
-                                    <i class="las la-building"></i> Tasación de Inmuebles
-                                </div>
-                            </q-card-section>
-
-                            <q-card-section class="q-py-none service-description">
-                                <div>Visita de un arquitecto.</div>
-                                <div>Cálculo del precio de la casa utilizando la metodología de Opdomun.</div>
-                                <div>Entrega de informe técnico.</div>
-                                <div class="q-my-md text-body1">
-                                    <strong>40 cuc</strong>
-                                </div>
-                            </q-card-section>
-
-                            <q-separator inset/>
-
-                            <q-card-actions>
-                                <q-btn flat no-caps
-                                       color="primary"
-                                       class="full-width"
-                                >
-                                    <span class="text-body1 text-bold">Seleccionar</span>
-                                </q-btn>
-                            </q-card-actions>
-                        </q-card>
-                    </div>
-
-                    <div class="col-sm-6 col-md-3 col-12 q-pa-sm">
-                        <q-card flat class="text-center bg-grey-4">
-                            <q-card-section>
-                                <div class="text-h6">
-                                    <i class="las la-edit"></i> Subscripción de ofertas
-                                </div>
-                            </q-card-section>
-
-                            <q-card-section class="q-py-none service-description">
-                                <div>Registro de las caracteristicas de la casa que usted desea comprar.</div>
-                                <div>Notificación de anuncios de casas de acuerdo a sus preferencias.</div>
-                                <div class="q-my-md text-body1">
-                                    <strong>Gratis / 3 meses</strong>
-                                </div>
-                            </q-card-section>
-
-                            <q-separator inset/>
-
-                            <q-card-actions>
-                                <q-btn flat no-caps
-                                       color="primary"
-                                       class="full-width"
-                                       to="/suscribirse"
-                                >
-                                    <span class="text-body1 text-bold">Seleccionar</span>
-                                </q-btn>
-                            </q-card-actions>
-                        </q-card>
-                    </div>
-
-                    <div class="col-sm-6 col-md-3 col-12 q-pa-sm">
-                        <q-card flat class="text-center bg-grey-4">
-                            <q-card-section>
-                                <div class="text-h6">
-                                    <i class="las la-bullhorn"></i> Anuncio Gratis
-                                </div>
-                            </q-card-section>
-
-                            <q-card-section class="q-py-none service-description">
-                                <div>Publicación de su anuncio en Opdomun</div>
-                                <div>Activo por un mes</div>
-                                <div class="q-my-md text-body1">
-                                    <strong>Gratis / 1 meses</strong>
-                                </div>
-                            </q-card-section>
-
-                            <q-separator inset/>
-
-                            <q-card-actions>
-                                <q-btn flat no-caps
-                                       color="primary"
-                                       class="full-width"
-                                >
-                                    <span class="text-body1 text-bold">Seleccionar</span>
+                                    <span class="text-body1 text-bold">Elegir</span>
                                 </q-btn>
                             </q-card-actions>
                         </q-card>
@@ -192,6 +99,7 @@
 
 <script>
 import Header from 'layouts/Header.vue'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'PageAbout',
@@ -202,6 +110,25 @@ export default {
     return {
       title: 'Quienes somos'
     }
+  },
+  computed: {
+    ...mapGetters('ourServices', [
+      'ourServices',
+      'ourServicesType'
+    ])
+  },
+  methods: {
+    ...mapActions('ourServices', [
+      'loadOurServices'
+    ]),
+    onSelectService (type) {
+      if (type === this.ourServicesType.PREMIUM_POST) {
+      } else {
+      }
+    }
+  },
+  mounted () {
+    this.loadOurServices()
   },
   meta () {
     return {

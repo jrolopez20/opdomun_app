@@ -23,3 +23,7 @@ export function post (state) {
 export function filters (state) {
   return state.filters
 }
+
+export function currencies (state) {
+  return ['CUP', 'USD']
+}
