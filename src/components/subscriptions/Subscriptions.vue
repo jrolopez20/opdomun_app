@@ -1,7 +1,7 @@
 <template>
-  <div class="full-width q-pa-none">
-    <div class="text-h6">Anuncios de compra</div>
+  <div class="full-width">
     <q-table flat
+             binary-state-sort
              :data="data"
              :columns="columns"
              row-key="id"
@@ -9,8 +9,17 @@
              :loading="loading"
              :filter="filter"
              @request="onRequest"
-             binary-state-sort
     >
+      <template v-slot:top>
+        <div class="text-h6">Anuncios de compra</div>
+        <q-space />
+        <q-btn rounded no-caps
+               icon="add"
+               color="primary"
+               :disable="loading"
+               label="Nuevo anuncio de compra"
+               to="/compro-casa/nuevo" />
+      </template>
       <template v-slot:body="props">
         <q-tr :props="props">
           <q-td key="provincia" :props="props">{{ props.row.provincia.title }}</q-td>

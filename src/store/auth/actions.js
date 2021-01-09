@@ -21,6 +21,18 @@ export function login ({ dispatch, commit, getters }, user) {
   })
 }
 
+export function signUp ({ dispatch, commit, getters }, user) {
+  return new Promise((resolve, reject) => {
+    axiosInstance.post('register', { ...user })
+      .then(response => {
+        resolve(response)
+      })
+      .catch((e) => {
+        reject(e)
+      })
+  })
+}
+
 export function logout ({ commit }) {
   return new Promise((resolve, reject) => {
     CookieHandler.remove(OPDOMUN_KEY)

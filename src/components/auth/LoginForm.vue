@@ -51,14 +51,14 @@
 <!--                />-->
                 <div>
                     ¿No tienes aún una cuenta?
-                    <q-btn no-caps flat
+                    <q-btn no-caps flat rounded class="q-px-sm"
                            @click="signUp"
                            label="Regístrarte!"/>
                 </div>
             </q-card-actions>
         </q-card>
         <div class="text-center text-caption q-my-md">Al loguearse usted está aceptando los <br/>
-            <router-link to="/terms" class="text-primary" style="text-decoration: none">Términos y
+            <router-link to="/condiciones-de-uso" class="text-primary" style="text-decoration: none">Términos y
                 Condiciones de uso
             </router-link>
         </div>

@@ -9,51 +9,47 @@
 
         <div class="full-width row">
             <div class="col-sm-4 col-12 q-pa-sm">
-                <q-card flat class="text-center bg-grey-2">
+                <q-card flat bordered class="text-center">
                     <q-card-section class="q-pb-none">
-                        <div class="text-h4">
+                        <div class="text-h4 text-primary">
                             <i class="las la-edit"></i>
                         </div>
                     </q-card-section>
 
-                    <q-card-section class="text-bold">
+                    <q-card-section>
                         Registramos los aspectos de la casa que quieres comprar y te notificamos cuando tengamos ofertas
-                        para ti
+                        para ti.
                     </q-card-section>
 
-                    <q-separator inset/>
-
-                    <q-card-actions>
-                        <q-btn flat no-caps
+                    <q-card-actions align="center" class="q-pb-lg">
+                        <q-btn rounded outline no-caps
                                color="primary"
-                               class="full-width"
-                               to="/suscribirse"
+                               class="q-px-md"
+                               to="/compro-casa/nuevo"
                         >
-                            <span class="text-body2 text-bold">Subscripción de oferta</span>
+                            <span class="text-body2 text-bold">Crear anuncio de compra</span>
                         </q-btn>
                     </q-card-actions>
                 </q-card>
             </div>
 
             <div class="col-sm-4 col-12 q-pa-sm">
-                <q-card flat class="text-center bg-grey-2">
+                <q-card flat bordered class="text-center">
                     <q-card-section class="q-pb-none">
-                        <div class="text-h4">
+                        <div class="text-h4 text-primary">
                             <i class="las la-bullhorn"></i>
                         </div>
                     </q-card-section>
 
-                    <q-card-section class="text-bold">
+                    <q-card-section>
                         Publicamos y promocionamos tu casa en venta de forma seria y profesional, notificamos tu oferta
-                        a nuestros compradores
+                        a nuestros compradores.
                     </q-card-section>
 
-                    <q-separator inset/>
-
-                    <q-card-actions>
-                        <q-btn flat no-caps
+                    <q-card-actions align="center" class="q-pb-lg">
+                        <q-btn rounded outline no-caps
                                color="primary"
-                               class="full-width"
+                               class="q-px-md"
                                to="/oficinas"
                         >
                             <span class="text-body2 text-bold">Publicar anuncio</span>
@@ -63,24 +59,22 @@
             </div>
 
             <div class="col-sm-4 col-12 q-pa-sm">
-                <q-card flat class="text-center bg-grey-2">
+                <q-card flat bordered class="text-center">
                     <q-card-section class="q-pb-none">
-                        <div class="text-h4">
+                        <div class="text-h4 text-primary">
                             <i class="las la-calculator"></i>
                         </div>
                     </q-card-section>
 
-                    <q-card-section class="text-bold">
+                    <q-card-section>
                         Calculamos el valor real de tu casa utilizando la sapiencia de un arquitecto y un novedoso
-                        sistema informático
+                        sistema informático.
                     </q-card-section>
 
-                    <q-separator inset/>
-
-                    <q-card-actions>
-                        <q-btn flat no-caps
+                    <q-card-actions align="center" class="q-pb-lg">
+                        <q-btn rounded outline no-caps
                                color="primary"
-                               class="full-width"
+                               class="q-px-md"
                                to="/oficinas"
                         >
                             <span class="text-body2 text-bold">Tasar mi casa</span>

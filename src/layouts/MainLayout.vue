@@ -151,7 +151,13 @@ export default {
       'logout'
     ]),
     onLogout () {
-      this.logout()
+      this.$q.dialog({
+        title: this.$t('common.labels.confirm'),
+        message: this.$t('auth.logout.logout_confirmation'),
+        cancel: true
+      }).onOk(() => {
+        this.logout()
+      })
     }
   }
 }

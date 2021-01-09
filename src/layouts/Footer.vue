@@ -4,7 +4,7 @@
             <div class="col-12 text-center q-pb-lg">
                 <q-btn outline no-caps
                        type="a"
-                       href="https://app.opdomun.com/Android/Opdomun-v1.0.0%2010.apk"
+                       href="https://www.apklis.cu/application/com.opdomun"
                        target="_blank"
                        rel="noopener noreferrer"
                 >
@@ -12,7 +12,7 @@
                         <q-icon left name="android" style="font-size: 36px;"/>
                         <div class="text-left">
                             <div style="font-size: 11px;line-height: 12px">DISPONIBLE EN</div>
-                            <div style="font-size: 22px;line-height: 22px;">App Store</div>
+                            <div style="font-size: 22px;line-height: 22px;">Apklis</div>
                         </div>
                     </div>
                 </q-btn>

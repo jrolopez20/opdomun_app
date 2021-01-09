@@ -35,7 +35,7 @@
                         <change-password/>
                     </q-tab-panel>
 
-                    <q-tab-panel name="subscription">
+                    <q-tab-panel name="subscription" class="q-pa-none">
                         <Subscriptions/>
                     </q-tab-panel>
                 </q-tab-panels>

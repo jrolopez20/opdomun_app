@@ -28,6 +28,7 @@ export default {
       set: 'Modificar',
       delete: 'Eliminar',
       edit: 'Editar',
+      info: 'Información',
       confirm: 'Confirmar',
       confirmDelete: '¿Está seguro que desea eliminar este elemento?',
       publishedAt: 'Publicado',
