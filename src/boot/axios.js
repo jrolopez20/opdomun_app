@@ -1,8 +1,8 @@
 import axios from 'axios'
 import Notification from '../services/notification.service'
 
-// const baseUrl = 'https://api.opdomun.com'
-const baseUrl = 'http://localhost:3334'
+const baseUrl = 'https://api.opdomun.com'
+// const baseUrl = 'http://localhost:3334'
 const axiosInstance = axios.create({
   baseURL: `${baseUrl}/api/`
 })
