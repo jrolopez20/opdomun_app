@@ -7,7 +7,7 @@
             <q-card-section>
                 <div class="row">
                     <div class="col-sm-6 col-12 q-pa-xs">
-                        <q-input outlined dense required rounded
+                        <q-input outlined dense required rounded disable
                                  v-model="user.email"
                                  :label="this.$t('common.labels.email')"
                                  :rules="[
@@ -34,6 +34,12 @@
                             </template>
                         </q-input>
                     </div>
+                    <div class="col-sm-6 col-12 q-pa-xs q-mb-md">
+                        <PhoneNumberInput
+                                :telephone="user.telephone"
+                                @update="setTelephone"
+                        />
+                    </div>
                     <div class="col-sm-6 col-12 q-pa-xs">
                         <q-input outlined dense rounded
                                  v-model="user.numid"
@@ -41,20 +47,6 @@
                         >
                             <template v-slot:prepend>
                                 <q-icon name="las la-id-card"/>
-                            </template>
-                        </q-input>
-                    </div>
-                    <div class="col-sm-6 col-12 q-pa-xs">
-                        <q-input outlined dense required rounded
-                                 v-model="user.telephone"
-                                 :label="this.$t('common.labels.phone')"
-                                 :rules="[
-                                        val => val && val.length > 0 || this.$t('common.errors.required'),
-                                        val => val.length <= 30 || 'Please use maximum 30 characters'
-                                     ]"
-                        >
-                            <template v-slot:prepend>
-                                <q-icon name="las la-phone"/>
                             </template>
                         </q-input>
                     </div>
@@ -79,9 +71,13 @@
 import { Loading } from 'quasar'
 import { mapGetters, mapActions } from 'vuex'
 import Notification from '../../services/notification.service'
+import PhoneNumberInput from '../../components/common/PhoneNumberInput'
 
 export default {
   name: 'UserDetail',
+  components: {
+    PhoneNumberInput
+  },
   data () {
     return {
       user: {},
@@ -113,6 +109,9 @@ export default {
           Notification.showWarning(this.$t('common.errors.incompleteForm'))
         }
       })
+    },
+    setTelephone (telephone) {
+      this.user.telephone = telephone
     }
   },
   mounted () {
