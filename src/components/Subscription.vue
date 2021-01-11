@@ -134,19 +134,11 @@
                         </q-input>
                     </div>
                     <div class="col-sm-6 col-12 q-pa-sm">
-                        <q-input outlined dense required rounded
-                                 v-model="property.owner.telephone"
-                                 type="tel"
-                                 label="Teléfono móvil"
-                                 prefix="+(53)"
-                                 :rules="[
-                                  val => !!val || this.$t('common.errors.required')
-                                ]"
-                        >
-                            <template v-slot:prepend>
-                                <q-icon name="las la-phone"/>
-                            </template>
-                        </q-input>
+                        <PhoneNumberInput
+                                required
+                                :telephone="property.owner.telephone"
+                                @update="setTelephone"
+                        />
                     </div>
                     <div class="col-sm-6 col-12 q-pa-sm">
                         <q-input
@@ -186,9 +178,13 @@
 import { Loading } from 'quasar'
 import { mapGetters, mapActions } from 'vuex'
 import Notification from '../services/notification.service'
+import PhoneNumberInput from '../components/common/PhoneNumberInput'
 
 export default {
   name: 'Subscription',
+  components: {
+    PhoneNumberInput
+  },
   data () {
     return {
       editMode: false,
@@ -202,9 +198,9 @@ export default {
         bedrooms: null,
         bathrooms: null,
         owner: {
-          fullname: 'javier',
-          telephone: 5478455,
-          email: 'example@gmail.com'
+          fullname: null,
+          telephone: null,
+          email: null
         }
       }
     }
@@ -253,7 +249,7 @@ export default {
     },
     onSubmit () {
       this.$refs.formSubscription.validate().then(success => {
-        if (success) {
+        if (success && this.property.owner.telephone) {
           Loading.show()
           this.property = {
             ...this.property,
@@ -298,6 +294,9 @@ export default {
           maxPrice: subscription.maxPrice.value
         }
       }
+    },
+    setTelephone (telephone) {
+      this.property.owner.telephone = telephone
     }
   },
   mounted () {

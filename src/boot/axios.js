@@ -1,10 +1,8 @@
 import axios from 'axios'
 import Notification from '../services/notification.service'
 
-const baseUrl = 'https://api.opdomun.com'
-// const baseUrl = 'http://localhost:3334'
 const axiosInstance = axios.create({
-  baseURL: `${baseUrl}/api/`
+  baseURL: `${process.env.API}/api/`
 })
 
 export default async ({ Vue, store }) => {
@@ -41,4 +39,4 @@ export default async ({ Vue, store }) => {
   Vue.prototype.$axios = axiosInstance
 }
 
-export { axiosInstance, baseUrl }
+export { axiosInstance }

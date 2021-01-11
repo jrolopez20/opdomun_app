@@ -209,7 +209,6 @@ import { mapActions, mapGetters } from 'vuex'
 import { date } from 'quasar'
 import Header from 'layouts/Header.vue'
 import FeaturedPosts from 'components/property/FeaturedPosts.vue'
-import { baseUrl } from 'boot/axios'
 
 export default {
   name: 'PropertyDetail',
@@ -237,7 +236,7 @@ export default {
       return date.getDateDiff(new Date(), this.post.publishedAt)
     },
     apiURL () {
-      return `${baseUrl}/api/`
+      return `${process.env.API}/api/`
     }
   },
   watch: {
