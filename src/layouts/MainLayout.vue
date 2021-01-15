@@ -132,7 +132,7 @@ export default {
         { icon: 'las la-building', text: 'Oficinas Opdomun', link: '/oficinas' },
         { icon: 'las la-book', text: 'Blog', link: '/blog' },
         { icon: 'las la-users', text: 'Quienes somos', link: '/quienes-somos' },
-        { icon: 'las la-question-circle', text: 'Preguntas frecuentes', textAbreviate: 'FAQ', link: '/preguntas-frecuentes' }
+        { icon: 'las la-question-circle', text: 'Preguntas frecuentes', textAbreviate: 'FAQ', link: '/faq' }
       ],
       links2: [
         { icon: 'las la-calculator', text: 'Calculadora de impuestos', link: '/calcular-impuesto' },

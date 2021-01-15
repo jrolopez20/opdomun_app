@@ -60,7 +60,7 @@ const routes = [
         component: () => import('pages/About.vue')
       },
       {
-        path: 'preguntas-frecuentes',
+        path: 'faq',
         component: () => import('pages/Faq.vue')
       },
 
