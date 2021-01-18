@@ -39,7 +39,7 @@
 
         <AppPromotion class="q-my-xl"/>
 
-        <WhyChooseUs class="q-px-md q-mb-xl"/>
+        <WhyChooseUs class="q-px-md"/>
 
     </q-page>
 </template>

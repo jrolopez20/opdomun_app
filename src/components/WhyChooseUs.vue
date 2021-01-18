@@ -1,5 +1,5 @@
 <template>
-    <div class="full-width bg-white">
+    <div class="full-width q-py-xl choose-us-background">
         <div class="full-width ">
             <div class="text-h4 text-center text-dark">¿<span class="text-primary">Por qué</span> elegirnos?</div>
             <p class="text-h6 text-grey-8 q-mt-sm text-center">
@@ -8,8 +8,8 @@
         </div>
 
         <div class="full-width row">
-            <div class="col-sm-4 col-12 q-pa-sm">
-                <q-card flat bordered class="text-center">
+            <div class="col-md-4 col-12 q-pa-sm">
+                <q-card flat class="text-center bg-transparent">
                     <q-card-section class="q-pb-none">
                         <div class="text-h4 text-primary">
                             <i class="las la-edit"></i>
@@ -33,8 +33,8 @@
                 </q-card>
             </div>
 
-            <div class="col-sm-4 col-12 q-pa-sm">
-                <q-card flat bordered class="text-center">
+            <div class="col-md-4 col-12 q-pa-sm">
+                <q-card flat class="text-center bg-transparent">
                     <q-card-section class="q-pb-none">
                         <div class="text-h4 text-primary">
                             <i class="las la-bullhorn"></i>
@@ -58,8 +58,8 @@
                 </q-card>
             </div>
 
-            <div class="col-sm-4 col-12 q-pa-sm">
-                <q-card flat bordered class="text-center">
+            <div class="col-md-4 col-12 q-pa-sm">
+                <q-card flat class="text-center bg-transparent">
                     <q-card-section class="q-pb-none">
                         <div class="text-h4 text-primary">
                             <i class="las la-calculator"></i>
@@ -91,3 +91,7 @@ export default {
   name: 'WhyChooseUs'
 }
 </script>
+<style lang="sass">
+    .choose-us-background
+        background: #f5f8fa
+</style>

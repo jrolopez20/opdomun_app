@@ -10,20 +10,22 @@
             <div class="row items-end">
               <div class="col">
                 <q-btn type="a"
+                       class="download-app"
                        href="https://play.google.com/store/apps/details?id=com.opdomun"
                        target="_blank"
                        rel="noopener noreferrer">
                   <q-img src="images/google_play.png" style="width: 125px"/>
                 </q-btn>
               </div>
-              <div class="col">
-                <q-btn type="a"
-                       href=""
-                       target="_blank"
-                       rel="noopener noreferrer">
-                  <q-img src="images/app_store.png" style="width: 125px"/>
-                </q-btn>
-              </div>
+<!--              <div class="col">-->
+<!--                <q-btn type="a"-->
+<!--                       class="download-app"-->
+<!--                       href=""-->
+<!--                       target="_blank"-->
+<!--                       rel="noopener noreferrer">-->
+<!--                  <q-img src="images/app_store.png" style="width: 125px"/>-->
+<!--                </q-btn>-->
+<!--              </div>-->
             </div>
           </div>
         </div>
@@ -40,6 +42,7 @@ export default {
 </script>
 
 <style lang="sass">
-  .q-btn__wrapper
-    padding: 0px
+  .download-app
+    .q-btn__wrapper
+      padding: 0px
 </style>
