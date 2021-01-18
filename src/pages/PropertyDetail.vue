@@ -1,6 +1,9 @@
 <template>
   <q-page class="">
-    <Header :title="title"/>
+      <Header>
+          {{postHeader}}
+          <div class="text-body1">{{ post.address.localidad.title }}, {{ post.address.description }}</div>
+      </Header>
       <div class="q-pa-md">
           <div class="row">
               <section class="col-md-6 col-12">
@@ -49,7 +52,8 @@
                       <div class="col-sm-6 col-12 q-px-sm">
                           <div class="row">
                               <div class="col">
-                                  <q-icon name="las la-bed" size="xs"/> Habitaciones
+                                  <q-icon name="las la-bed" size="xs"/>
+                                  Habitaciones
                               </div>
                               <div class="col-auto text-weight-medium">{{ post.bedrooms }}</div>
                           </div>
@@ -58,7 +62,8 @@
                       <div class="col-sm-6 col-12 q-px-sm">
                           <div class="row">
                               <div class="col">
-                                  <q-icon name="las la-bath" size="xs"/> Baños
+                                  <q-icon name="las la-bath" size="xs"/>
+                                  Baños
                               </div>
                               <div class="col-auto text-weight-medium">{{ post.bathrooms }}</div>
                           </div>
@@ -67,7 +72,8 @@
                       <div class="col-sm-6 col-12 q-px-sm">
                           <div class="row">
                               <div class="col">
-                                  <q-icon name="las la-ruler-combined" size="xs"/> Área
+                                  <q-icon name="las la-ruler-combined" size="xs"/>
+                                  Área
                               </div>
                               <div class="col-auto text-weight-medium">{{ post.area }} m²</div>
                           </div>
@@ -76,7 +82,8 @@
                       <div class="col-sm-6 col-12 q-px-sm">
                           <div class="row">
                               <div class="col">
-                                  <q-icon name="las la-calendar" size="xs"/> Año de construcción
+                                  <q-icon name="las la-calendar" size="xs"/>
+                                  Año de construcción
                               </div>
                               <div class="col-auto text-right text-weight-medium">{{ post.builtYear }}</div>
                           </div>
@@ -85,7 +92,8 @@
                       <div class="col-sm-6 col-12 q-px-sm">
                           <div class="row">
                               <div class="col">
-                                  <q-icon name="las la-house-damage" size="xs"/> Estado
+                                  <q-icon name="las la-house-damage" size="xs"/>
+                                  Estado
                               </div>
                               <div class="col-auto text-weight-medium">{{ post.buildStatus }}</div>
                           </div>
@@ -94,15 +102,19 @@
                       <div class="col-sm-6 col-12 q-px-sm">
                           <div class="row">
                               <div class="col">
-                                  <q-icon name="las la-building" size="xs"/> Tipo de vivienda
+                                  <q-icon name="las la-building" size="xs"/>
+                                  Tipo de vivienda
                               </div>
-                              <div class="col-auto text-right text-weight-medium">{{ post.homeType ? post.homeType.title : '' }}</div>
+                              <div class="col-auto text-right text-weight-medium">{{ post.homeType ? post.homeType.title
+                                  : '' }}
+                              </div>
                           </div>
                           <q-separator class="q-my-sm"/>
                       </div>
                       <div class="col-12 q-px-sm">
                           <div class="q-px-sm">
-                              <q-icon name="las la-door-open" size="sm"/> Otros espacios:
+                              <q-icon name="las la-door-open" size="sm"/>
+                              Otros espacios:
                           </div>
                           <q-chip square v-for="place in post.postPlaces" :key="place.id">
                               {{ place.title }}
@@ -110,7 +122,15 @@
                       </div>
                       <div class="col-12 q-px-sm text-center">
                           <q-separator class="q-my-md"/>
-                          <q-btn flat no-caps type="a" :href="apiURL + `posts/${post.id}/report`" target="_blank" rel="noopener noreferrer" label="Ver informe técnico" color="primary" />
+                          <q-btn flat rounded no-caps
+                                 type="a"
+                                 :href="apiURL + `posts/${post.id}/report`"
+                                 target="_blank"
+                                 rel="noopener noreferrer"
+                                 label="Ver informe técnico"
+                                 color="primary"
+                                 class="q-px-md"
+                          />
                       </div>
 
                   </div>
@@ -200,7 +220,7 @@
                   <FeaturedPosts/>
               </div>
           </div>
-    </div>
+      </div>
   </q-page>
 </template>
 
@@ -250,7 +270,7 @@ export default {
       return date
     },
     onPostChange () {
-      if (this.post.images) {
+      if (this.post.images && this.post.images.length) {
         this.slide = this.post.images[0].id
       }
     }

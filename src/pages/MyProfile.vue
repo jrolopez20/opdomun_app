@@ -1,6 +1,8 @@
 <template>
     <q-page>
-        <Header :title="title" class="q-mb-md"/>
+        <Header class="q-mb-md">
+            {{title}}
+        </Header>
         <div class="q-px-sm q-pb-md full-width">
             <q-card flat bordered class="full-width">
                 <q-tabs

@@ -1,6 +1,8 @@
 <template>
   <q-page class="flex flex-block">
-    <Header :title="title"/>
+    <Header>
+      {{title}}
+    </Header>
     <div class="row wrap full-width q-px-sm">
       <div class="col-sm-8 col-12 ">
         <div class="text-h5 q-pt-lg q-pb-md q-pl-lg">Aspectos de la casa que quiero comprar</div>

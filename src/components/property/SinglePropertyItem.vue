@@ -2,7 +2,7 @@
   <q-item>
     <q-item-section thumbnail class="q-pl-xs" style="justify-content: flex-start;">
       <router-link
-              :to="`casas-en-venta/${property.id}`"
+              :to="`/casas-en-venta/${property.id}`"
               style="text-decoration: none"
       >
         <q-img

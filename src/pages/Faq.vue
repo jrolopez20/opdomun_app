@@ -1,6 +1,8 @@
 <template>
     <q-page class="flex flex-block ">
-        <Header :title="title"/>
+        <Header>
+            {{title}}
+        </Header>
         <div class="row wrap full-width q-px-sm">
             <div class="col-sm-8 col-12 q-pa-sm">
                 <div class="text-h5 q-py-lg">Donde todas sus preguntas serán respondidas</div>

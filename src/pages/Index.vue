@@ -1,24 +1,26 @@
 <template>
     <q-page class="flex flex-center">
-        <q-parallax :height="250" :speed="0.5" >
+        <q-parallax :height="350" :speed="0.5">
             <template v-slot:media>
                 <img src="images/header_background.jpg">
             </template>
+            <div class="row items-end full-height">
+                <div class="q-gutter-xl q-mb-xl">
+                    <div class="col-12 text-white text-center q-pa-md"
+                         style="font-size: 1.7rem; line-height: 1.8rem;">
+                        Ahora estás más cerca de la<br/> casa de tus sueños
+                    </div>
 
-<!--            <h3 class="text-white text-left q-px-lg full-width">Miles de compradores registrados esperan por tu anuncio</h3>-->
-
-            <div class="q-pa-md q-gutter-sm text-center">
-<!--                <q-btn no-caps unelevated rounded color="primary" label="Publicar casa" to="/anuncio/nuevo" style="min-width: 250px"/>-->
-                <q-btn no-caps unelevated rounded color="primary" label="Crear anuncio de compra" to="/compro-casa/nuevo" style="min-width: 250px"/>
+                    <div class="col-12 q-gutter-sm text-center">
+                        <!--                <q-btn no-caps unelevated rounded color="primary" label="Publicar casa" to="/anuncio/nuevo" style="min-width: 250px"/>-->
+                        <q-btn no-caps unelevated rounded color="primary" label="Crear anuncio de compra"
+                               to="/compro-casa/nuevo" style="min-width: 250px"/>
+                    </div>
+                </div>
             </div>
         </q-parallax>
 
-        <FilterProperty
-                class="q-mb-lg full-width"
-                @onSearch="search"
-        />
-
-        <div class="full-width q-pb-md">
+        <div class="full-width q-pb-md q-mt-xl">
             <div class="text-h3 text-center text-dark">¿<span class="text-primary">Recomendaciones</span> del mes?</div>
             <p class="text-h6 text-grey-8 q-mt-sm text-center">
                 Mejores anuncios según la relación calidad precio.
@@ -36,61 +38,25 @@
             </div>
         </div>
 
-        <WhyChooseUs class="q-mt-md q-px-md"/>
+        <AppPromotion class="q-my-xl"/>
 
-<!--        <div class="row wrap full-width q-px-sm">-->
-<!--            <div class="col-sm-4 col-12 q-pa-md">-->
-<!--                <q-card flat bordered>-->
-<!--                    <q-card-section>-->
-<!--                        <div>-->
-<!--                            <q-icon name="las la-search" size="xl" color="primary" />-->
-<!--                        </div>-->
-<!--                        <div class="text-h6 q-my-sm">Fácil de usar</div>-->
-<!--                        <p class="text-body1">OPDOMUN ordena las ofertas de casas de acuerdo al Índice Opdo, el cual-->
-<!--                            representa el balance costo-beneficio de cada inmueble.</p>-->
-<!--                    </q-card-section>-->
-<!--                </q-card>-->
-<!--            </div>-->
-<!--            <div class="col-sm-4 col-12 q-pa-md">-->
-<!--                <q-card flat bordered>-->
-<!--                    <q-card-section>-->
-<!--                        <div>-->
-<!--                            <q-icon name="las la-building" size="xl" color="primary"/>-->
-<!--                        </div>-->
-<!--                        <div class="text-h6 q-my-sm">Vivienda + entorno</div>-->
-<!--                        <p class="text-body1">Se apoya en un procedimiento científico para evaluar una casa de acuerdo a-->
-<!--                            sus características y a las del entorno donde se encuentra.</p>-->
-<!--                    </q-card-section>-->
-<!--                </q-card>-->
-<!--            </div>-->
-<!--            <div class="col-sm-4 col-12 q-pa-md">-->
-<!--                <q-card flat bordered>-->
-<!--                    <q-card-section>-->
-<!--                        <div>-->
-<!--                            <q-icon name="la la-address-book" size="xl" color="primary"/>-->
-<!--                        </div>-->
-<!--                        <div class="text-h6 q-my-sm">Equipo competente</div>-->
-<!--                        <p class="text-body1">OPDOMUN es posible gracias a su equipo profesional que trabaja con pasión-->
-<!--                            para brindar la ayuda que usted necesita.</p>-->
-<!--                    </q-card-section>-->
-<!--                </q-card>-->
-<!--            </div>-->
-<!--        </div>-->
+        <WhyChooseUs class="q-px-md q-mb-xl"/>
+
     </q-page>
 </template>
 
 <script>
 import SingleProperty from 'components/property/SingleProperty.vue'
-import FilterProperty from 'components/property/FilterProperty.vue'
 import WhyChooseUs from 'components/WhyChooseUs.vue'
+import AppPromotion from 'components/common/AppPromotion.vue'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'PageIndex',
   components: {
-    FilterProperty,
     SingleProperty,
-    WhyChooseUs
+    WhyChooseUs,
+    AppPromotion
   },
   computed: {
     ...mapGetters('post', [

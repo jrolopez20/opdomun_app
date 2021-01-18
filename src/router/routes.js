@@ -2,6 +2,17 @@ import auth from '../middleware/auth'
 
 const routes = [
   {
+    path: '/public',
+    component: () => import('layouts/AuthLayout'),
+    children: [
+      {
+        path: '/login',
+        name: 'login',
+        component: () => import('pages/Login.vue')
+      }
+    ]
+  },
+  {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
@@ -64,10 +75,10 @@ const routes = [
         component: () => import('pages/Faq.vue')
       },
 
-      {
-        path: 'login',
-        component: () => import('pages/Login.vue')
-      },
+      // {
+      //   path: 'login',
+      //   component: () => import('pages/Login.vue')
+      // },
       {
         path: 'politicas-de-privacidad',
         component: () => import('pages/legals/PrivacyPolice.vue')

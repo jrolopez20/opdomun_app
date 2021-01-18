@@ -1,6 +1,8 @@
 <template>
   <q-page class="flex flex-block">
-    <Header :title="title"/>
+    <Header>
+      {{title}}
+    </Header>
     <div class="full-width q-px-sm">
       <div class="text-h5 q-py-lg">Contacte con nuestra oficina más cercana</div>
       <q-table

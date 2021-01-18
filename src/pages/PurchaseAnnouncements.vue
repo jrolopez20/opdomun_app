@@ -1,6 +1,8 @@
 <template>
   <q-page class="flex flex-block">
-    <Header :title="title"/>
+    <Header>
+      {{title}}
+    </Header>
     <FilterPurchaseAnnouncement
             class="q-mb-lg full-width"
             @onSearch="updateFilter"

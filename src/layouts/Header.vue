@@ -4,19 +4,19 @@
             <img src="images/header_background.jpg">
         </template>
 
-        <h3 class="text-white text-left q-px-lg full-width">{{title}}</h3>
+        <div class="row items-end full-height full-width q-px-lg q-mb-xl text-white">
+            <div class="col">
+                <div class="text-h4 text-white text-left full-width">
+                    <slot></slot>
+                </div>
+            </div>
+        </div>
     </q-parallax>
 </template>
 
 <script>
 export default {
   name: 'Header',
-  props: {
-    title: {
-      type: String,
-      required: true
-    }
-  },
   data () {
     return {
     }

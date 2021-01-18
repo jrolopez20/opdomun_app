@@ -11,9 +11,7 @@
                            type="a" href="mailto:info@opdomun.com"/>
                 </div>
             </div>
-<!--            <div class="col-12 q-p">-->
-<!--                <q-separator class="q-my-sm q-mx-md" dark/>-->
-<!--            </div>-->
+
             <div class="col-12 copy-right q-py-md text-center text-body2">
                 Copyright @ 2021 Opdomun Todos los derechos reservados
                 <p class="text-caption q-mb-none q-pb-none">

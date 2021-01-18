@@ -1,5 +1,5 @@
 <template>
-    <div class="full-width bg-white q-py-xl">
+    <div class="full-width bg-white">
         <div class="full-width ">
             <div class="text-h3 text-center text-dark">¿<span class="text-primary">Por qué</span> elegirnos?</div>
             <p class="text-h6 text-grey-8 q-mt-sm text-center">

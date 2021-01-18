@@ -1,6 +1,7 @@
 <template>
     <q-form ref="formSignUp" v-on:submit.prevent="onSubmit()">
-        <q-card flat bordered
+        <q-card flat dark
+                class="bg-transparent"
                 style="max-width: 640px; padding: 20px; min-width: 320px;"
         >
             <q-card-section>
@@ -11,7 +12,7 @@
             <q-card-section class="q-pa-none">
                 <div class="row">
                     <div class="col-sm-6 col-12 q-pa-xs">
-                        <q-input rounded outlined dense required
+                        <q-input rounded outlined dense required dark
                                  v-model="user.fullname"
                                  :label="this.$t('common.labels.fullName')"
                                  :rules="[
@@ -25,7 +26,7 @@
                         </q-input>
                     </div>
                     <div class="col-sm-6 col-12 q-pa-xs">
-                        <q-input rounded outlined dense required
+                        <q-input rounded outlined dense required dark
                                  v-model="user.email"
                                  :label="this.$t('common.labels.email')"
                                  :rules="[
@@ -39,7 +40,9 @@
                         </q-input>
                     </div>
                     <div class="col-xs-12 col-md-6 q-pa-xs">
-                        <q-input rounded outlined dense v-model="user.password" :type="isPwd ? 'password' : 'text'"
+                        <q-input rounded outlined dense dark
+                                 v-model="user.password"
+                                 :type="isPwd ? 'password' : 'text'"
                                  :label="this.$t('common.labels.password')"
                                  required
                                  :rules="[
@@ -57,7 +60,9 @@
                         </q-input>
                     </div>
                     <div class="col-xs-12 col-md-6 q-pa-xs">
-                        <q-input rounded outlined dense v-model="user.repassword" :type="isPwd2 ? 'password' : 'text'"
+                        <q-input rounded outlined dense dark
+                                 v-model="user.repassword"
+                                 :type="isPwd2 ? 'password' : 'text'"
                                  :label="this.$t('common.labels.repeatPassword')"
                                  :rules="[
                                             val => val === user.password || this.$t('common.errors.passwordMatch')
@@ -96,8 +101,11 @@
                 />
             </q-card-actions>
         </q-card>
-        <div class="text-center text-caption q-my-md">Al registrarse usted está aceptando los <br/>
-            <router-link to="/condiciones-de-uso" class="text-primary" style="text-decoration: none">Términos y
+        <div class="text-center text-caption q-my-md text-white">Al registrarse usted está aceptando las <br/>
+            <router-link to="/politicas-de-privacidad" class="text-primary" style="text-decoration: none">
+                Politícas de privacidad
+            </router-link> y
+            <router-link to="/condiciones-de-uso" class="text-primary" style="text-decoration: none">
                 Condiciones de uso
             </router-link>
         </div>

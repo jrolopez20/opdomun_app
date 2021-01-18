@@ -1,6 +1,8 @@
 <template>
   <q-page class="flex flex-block">
-    <Header :title="title"/>
+    <Header>
+      {{title}}
+    </Header>
     <div class="full-width q-pa-sm">
       <PremiumBanner/>
     </div>

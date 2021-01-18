@@ -1,10 +1,12 @@
 <template>
     <q-page class="flex flex-block">
-        <Header :title="title" class="q-mb-md"/>
+        <Header class="q-mb-md">
+            {{title}}
+        </Header>
 
         <div class="q-px-md">
-            <div class="full-width q-py-md">
-                <div class="text-h3 text-dark">Hola! Bienvenido a <span class="text-primary">OPDOMUN</span></div>
+            <div class="full-width">
+                <h3 class="text-h3 text-dark text-center">Hola! Bienvenido a <span class="text-primary">Opdomun</span></h3>
                 <p class="text-body1 text-grey-8 q-mt-sm">
                     Somos una empresa basada en el negocio colaborativo entre profesionales relacionados con el sector
                     inmobiliario. Con el objetivo de ofrecer los resultados que usted desea nos apoyamos en un
@@ -92,6 +94,9 @@
                     </div>
                 </div>
             </div>
+
+            <WhyChooseUs class="q-px-md q-mb-xl"/>
+
         </div>
 
     </q-page>
@@ -100,11 +105,13 @@
 <script>
 import Header from 'layouts/Header.vue'
 import { mapActions, mapGetters } from 'vuex'
+import WhyChooseUs from 'components/WhyChooseUs.vue'
 
 export default {
   name: 'PageAbout',
   components: {
-    Header
+    Header,
+    WhyChooseUs
   },
   data () {
     return {

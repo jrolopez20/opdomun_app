@@ -1,6 +1,7 @@
 <template>
     <q-form ref="formLogin" v-on:submit.prevent="onSubmit()">
-        <q-card flat bordered
+        <q-card flat dark
+                class="bg-transparent"
                 style="max-width: 380px; padding: 20px; min-width: 320px;"
         >
             <q-card-section>
@@ -9,7 +10,7 @@
                 </div>
             </q-card-section>
             <q-card-section class="q-gutter-y-sm q-pa-none">
-                <q-input outlined autofocus required dense rounded
+                <q-input outlined required dense rounded dark
                          v-model.trim="user.email"
                          placeholder="Email"
                          :rules="[
@@ -21,7 +22,7 @@
                         <q-icon name="las la-user"/>
                     </template>
                 </q-input>
-                <q-input outlined required dense rounded
+                <q-input outlined required dense rounded dark
                          v-model="user.password"
                          type="password"
                          placeholder="Contraseña"
@@ -57,7 +58,7 @@
                 </div>
             </q-card-actions>
         </q-card>
-        <div class="text-center text-caption q-my-md">Al loguearse usted está aceptando los <br/>
+        <div class="text-center text-caption q-my-md text-white">Al loguearse usted está aceptando los <br/>
             <router-link to="/condiciones-de-uso" class="text-primary" style="text-decoration: none">Términos y
                 Condiciones de uso
             </router-link>

@@ -1,6 +1,5 @@
 <template>
   <q-page class="flex flex-center">
-    <Header :title="title"/>
     <q-tab-panels v-model="panel" animated class="q-mx-sm q-mt-md bg-transparent">
       <q-tab-panel name="signin" class="q-pa-none">
         <LoginForm @signup="changeActivePanel('signup')"/>
@@ -14,14 +13,12 @@
 </template>
 
 <script>
-import Header from 'layouts/Header.vue'
 import LoginForm from '../components/auth/LoginForm'
 import SignUpForm from '../components/auth/SignUpForm'
 
 export default {
   name: 'LoginPage',
   components: {
-    Header,
     LoginForm,
     SignUpForm
   },

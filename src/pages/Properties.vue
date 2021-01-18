@@ -1,6 +1,8 @@
 <template>
   <q-page class="">
-    <Header :title="title"/>
+    <Header>
+      {{title}}
+    </Header>
     <FilterProperty
             class="q-mb-lg full-width"
     />
