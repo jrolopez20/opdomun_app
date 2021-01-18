@@ -6,7 +6,7 @@
 
         <div class="q-px-md">
             <div class="full-width">
-                <h3 class="text-h3 text-dark text-center">Hola! Bienvenido a <span class="text-primary">Opdomun</span></h3>
+                <h3 class="text-h4 text-dark text-center">Hola! Bienvenido a <span class="text-primary">Opdomun</span></h3>
                 <p class="text-body1 text-grey-8 q-mt-sm">
                     Somos una empresa basada en el negocio colaborativo entre profesionales relacionados con el sector
                     inmobiliario. Con el objetivo de ofrecer los resultados que usted desea nos apoyamos en un

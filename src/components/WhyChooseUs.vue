@@ -1,7 +1,7 @@
 <template>
     <div class="full-width bg-white">
         <div class="full-width ">
-            <div class="text-h3 text-center text-dark">¿<span class="text-primary">Por qué</span> elegirnos?</div>
+            <div class="text-h4 text-center text-dark">¿<span class="text-primary">Por qué</span> elegirnos?</div>
             <p class="text-h6 text-grey-8 q-mt-sm text-center">
                 Proponemos un nuevo punto de vista para elegir la vivienda apropiada.
             </p>

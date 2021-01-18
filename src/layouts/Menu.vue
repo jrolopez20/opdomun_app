@@ -2,6 +2,13 @@
     <div>
         <div class="text-white full-width q-px-sm" style="z-index: 1;position: absolute;">
             <q-toolbar class="GPL__toolbar" style="height: 54px">
+                <q-btn
+                        flat dense round
+                        @click="leftDrawerOpen = !leftDrawerOpen"
+                        aria-label="Menu"
+                        icon="menu"
+                        class="q-mr-md"
+                />
                 <router-link to="/" style="text-decoration: none;">
                     <q-toolbar-title shrink class="row items-center no-wrap" to="/">
                         <img src="images/logo-icon-white.png"
@@ -9,15 +16,6 @@
                         <h5 class="text-white q-pl-sm">opdomun</h5>
                     </q-toolbar-title>
                 </router-link>
-                <q-btn
-                        flat
-                        dense
-                        round
-                        @click="leftDrawerOpen = !leftDrawerOpen"
-                        aria-label="Menu"
-                        icon="menu"
-                        class="q-ml-sm"
-                />
 
                 <q-space/>
 
@@ -58,8 +56,9 @@
                 <q-img src="images/header_background.jpg" style="height: 150px">
                     <div v-if="isLoggedIn && loggedUser" class="absolute-bottom bg-transparent">
                         <q-avatar size="62px" class="q-mb-sm bg-primary">
-                            <img v-if="loggedUser" :src="loggedUser.picture">
-                            <div v-else class="text-h5">{{userInitials}}</div>
+
+                            <img v-if="loggedUser.picture" :src="loggedUser.picture">
+                            <div class="text-h5">{{fullnameInitials}}</div>
                         </q-avatar>
                         <div class="text-weight-bold">{{loggedUser.fullname}}</div>
                         <div class="text-grey-5">{{loggedUser.email}}</div>
@@ -154,20 +153,9 @@ export default {
   computed: {
     ...mapGetters('auth', [
       'isLoggedIn',
+      'fullnameInitials',
       'loggedUser'
-    ]),
-    userInitials () {
-      let str = ''
-      if (this.loggedUser && this.loggedUser && this.loggedUser.fullname) {
-        const arr = this.loggedUser.fullname.split(' ')
-        if (arr.length > 1) {
-          str = this.loggedUser.fullname[0] + '' + arr[1][0]
-        } else {
-          str = this.loggedUser.fullname[0]
-        }
-      }
-      return str
-    }
+    ])
   },
   methods: {
     ...mapActions('auth', [

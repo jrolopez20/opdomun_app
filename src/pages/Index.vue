@@ -6,9 +6,8 @@
             </template>
             <div class="row items-end full-height">
                 <div class="q-gutter-xl q-mb-xl">
-                    <div class="col-12 text-white text-center q-pa-md"
-                         style="font-size: 1.7rem; line-height: 1.8rem;">
-                        Ahora estás más cerca de la<br/> casa de tus sueños
+                    <div class="col-12 text-white text-center q-pa-md text-branding">
+                        Ahora estás más cerca de la casa de tus sueños
                     </div>
 
                     <div class="col-12 q-gutter-sm text-center">
@@ -20,8 +19,8 @@
             </div>
         </q-parallax>
 
-        <div class="full-width q-pb-md q-mt-xl">
-            <div class="text-h3 text-center text-dark">¿<span class="text-primary">Recomendaciones</span> del mes?</div>
+        <div class="q-px-sm full-width q-pb-md q-mt-xl">
+            <div class="text-h4 text-center text-dark">¿<span class="text-primary">Recomendaciones</span> del mes?</div>
             <p class="text-h6 text-grey-8 q-mt-sm text-center">
                 Mejores anuncios según la relación calidad precio.
             </p>
@@ -80,8 +79,13 @@ export default {
 </script>
 
 <style lang="sass">
-@media (min-width: 1024px)
-    .recommended_properties
-        padding-left: 80px !important
-        padding-right: 80px !important
+    .text-branding
+        font-size: 1.7rem
+        line-height: 1.8rem
+        font-family: 'Montserrat SemiBold'
+
+    @media (min-width: 1024px)
+        .recommended_properties
+            padding-left: 80px !important
+            padding-right: 80px !important
 </style>
