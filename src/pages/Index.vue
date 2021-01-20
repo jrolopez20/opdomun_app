@@ -1,11 +1,9 @@
 <template>
     <q-page class="flex flex-center">
-        <q-parallax :height="350" :speed="0.5">
-            <template v-slot:media>
-                <img src="images/header_background.jpg">
-            </template>
+
+        <div class="full-width bg-header" style="height: 380px;">
             <div class="row items-end full-height">
-                <div class="q-gutter-xl q-mb-xl">
+                <div class="full-width q-gutter-y-xl q-mb-xl">
                     <div class="col-12 text-white text-center q-pa-md text-branding">
                         Ahora estás más cerca de la casa de tus sueños
                     </div>
@@ -17,10 +15,10 @@
                     </div>
                 </div>
             </div>
-        </q-parallax>
+        </div>
 
         <div class="q-px-sm full-width q-pb-md q-mt-xl">
-            <div class="text-h4 text-center text-dark">¿<span class="text-primary">Recomendaciones</span> del mes?</div>
+            <div class="text-h4 text-center text-dark"><span class="text-primary">Recomendaciones</span> del mes</div>
             <p class="text-h6 text-grey-8 q-mt-sm text-center">
                 Mejores anuncios según la relación calidad precio.
             </p>
@@ -39,7 +37,7 @@
 
         <AppPromotion class="q-my-xl"/>
 
-        <WhyChooseUs class="q-px-md"/>
+        <WhyChooseUs/>
 
     </q-page>
 </template>
@@ -82,7 +80,7 @@ export default {
     .text-branding
         font-size: 1.7rem
         line-height: 1.8rem
-        font-family: 'Montserrat SemiBold'
+        font-family: 'Montserrat SemiBold', Roboto, sans-serif
 
     @media (min-width: 1024px)
         .recommended_properties

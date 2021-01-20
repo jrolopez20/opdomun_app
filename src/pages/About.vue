@@ -94,10 +94,9 @@
                     </div>
                 </div>
             </div>
-
-            <WhyChooseUs class="q-px-md q-mb-xl"/>
-
         </div>
+
+        <WhyChooseUs/>
 
     </q-page>
 </template>

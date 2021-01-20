@@ -19,7 +19,7 @@
 
                 <q-space/>
 
-                <q-tabs v-if="$q.screen.gt.xs" style="height: 54px">
+                <q-tabs v-if="$q.screen.gt.sm" style="height: 54px">
                     <q-route-tab no-caps
                                  v-for="item in links1"
                                  :key="item.text"
