@@ -1,14 +1,21 @@
 <template>
   <q-page class="flex flex-center">
-    <q-tab-panels v-model="panel" animated class="q-mx-sm q-mt-md bg-transparent">
-      <q-tab-panel name="signin" class="q-pa-none">
-        <LoginForm @signup="changeActivePanel('signup')"/>
-      </q-tab-panel>
+    <div class="q-pt-lg">
+        <div class="full-width text-center q-mt-xl">
+            <img src="images/logo-icon-white.png"
+                    style="width:85px;border:1px solid white;border-radius:50%;padding:1px 2px 2px 2px;" />
+        </div>
 
-      <q-tab-panel name="signup" class="q-pa-none">
-        <SignUpForm @signin="changeActivePanel('signin')" />
-      </q-tab-panel>
-    </q-tab-panels>
+      <q-tab-panels v-model="panel" animated class="q-mx-sm bg-transparent">
+        <q-tab-panel name="signin" class="q-pa-none">
+          <LoginForm @signup="changeActivePanel('signup')"/>
+        </q-tab-panel>
+
+        <q-tab-panel name="signup" class="q-pa-none">
+          <SignUpForm @signin="changeActivePanel('signin')" />
+        </q-tab-panel>
+      </q-tab-panels>
+    </div>
   </q-page>
 </template>
 

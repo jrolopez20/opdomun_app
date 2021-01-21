@@ -2,7 +2,7 @@
     <q-form ref="formLogin" v-on:submit.prevent="onSubmit()">
         <q-card flat dark
                 class="bg-transparent"
-                style="max-width: 380px; padding: 20px; min-width: 320px;"
+                style="max-width: 380px; min-width: 320px;"
         >
             <q-card-section>
                 <div class="text-h6 text-center">

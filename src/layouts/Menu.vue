@@ -7,13 +7,11 @@
                         @click="leftDrawerOpen = !leftDrawerOpen"
                         aria-label="Menu"
                         icon="menu"
-                        class="q-mr-md"
+                        class="q-mr-sm"
                 />
                 <router-link to="/" style="text-decoration: none;">
                     <q-toolbar-title shrink class="row items-center no-wrap" to="/">
-                        <img src="images/logo-icon-white.png"
-                             style="width:40px;border:1px solid white;border-radius:50%;padding:1px 2px 2px 2px;"/>
-                        <h5 class="text-white q-pl-sm">opdomun</h5>
+                        <span class="text-white text-logo">opdomun</span>
                     </q-toolbar-title>
                 </router-link>
 
@@ -173,3 +171,10 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+    .text-logo
+        font-size: 1.5rem
+        /*line-height: 1.8rem*/
+        font-family: 'Montserrat SemiBold', Roboto, sans-serif !important
+</style>
