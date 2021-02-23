@@ -9,7 +9,7 @@ RUN npm install && quasar build -m ssr
 
 FROM node:12-alpine
 
-COPY from=0 /app/dist/ssr/ /app/
+COPY --from=0 /app/dist/ssr/ /app/
 WORKDIR /app
 
 RUN npm install
