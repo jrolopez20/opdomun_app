@@ -50,7 +50,7 @@ module.exports = function (ctx) {
       env: {
         API: ctx.dev
           ? 'http:///127.0.0.1:3334'
-          : 'https://api.opdomun.com'
+          : 'https://api.labs.opdomun.com'
       },
 
       // transpile: false,
